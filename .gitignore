@@ -3,3 +3,4 @@ client/node_modules
 .vercel
 build
 .env
+**/.env
