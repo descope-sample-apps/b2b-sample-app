@@ -30,7 +30,7 @@ export default function DescopeSignIn() {
 					</Heading>
 				</Box>
 				<Descope
-					theme={ colorMode }
+					// theme={ colorMode }
 					flowId={process.env.REACT_APP_SIGN_IN_FLOW || "sign-in"}
 					onSuccess={(e) => {
 						console.log("Success!" + JSON.stringify(e.detail.user));

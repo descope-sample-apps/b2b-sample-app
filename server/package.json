@@ -5,7 +5,7 @@
 	"type": "module",
 	"scripts": {
 		"build": "rollup -c",
-		"start": "DEBUG=true ts-node --esm index.ts",
+		"start": "DEBUG=true ts-node --esm index.js",
 		"prod": "ts-node --esm src/index.ts"
 	},
 	"author": "descope",
