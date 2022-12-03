@@ -1,6 +1,6 @@
 {
-	"homepage": "https://b2b-sample-app.v.descope.com/",
-	"name": "horizon-ui-chakra-typescript",
+	"homepage": "",
+	"name": "descope-b2b-sample-client",
 	"version": "1.0.1",
 	"private": true,
 	"dependencies": {
