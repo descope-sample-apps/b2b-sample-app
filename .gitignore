@@ -4,3 +4,6 @@ client/node_modules
 client/build
 .env
 **/.env
+.replit
+replit.nix
+
