@@ -1,0 +1,16 @@
+// tsconfig.json
+{
+    "compilerOptions": {
+      "outDir": "./dist",
+      "allowJs": true,
+      "target": "es6",
+      "module": "es6",
+      "rootDir": "./",
+      "strict": true,
+      "esModuleInterop": true,
+      "skipLibCheck": true,
+      "forceConsistentCasingInFileNames": true,
+      "moduleResolution": "Node"
+    },
+    "include": ["**/*"]
+}
