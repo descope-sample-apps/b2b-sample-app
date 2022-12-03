@@ -35,7 +35,7 @@ const App = () => {
 }
 
 ReactDOM.render(
-	<AuthProvider projectId={process.env.REACT_APP_PROJECT_ID} baseUrl={process.env.REACT_APP_BASE_URL}>
+	<AuthProvider projectId={process.env.PROJECT_ID} baseUrl={process.env.BASE_URL}>
 			<App />
 	</AuthProvider>,
 	document.getElementById("root")
