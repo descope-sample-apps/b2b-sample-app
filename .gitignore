@@ -1,6 +1,9 @@
 server/node_modules
 client/node_modules
 .vercel
-build
+client/build
 .env
 **/.env
+.replit
+replit.nix
+
