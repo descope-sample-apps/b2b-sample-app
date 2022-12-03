@@ -1,5 +1,7 @@
 import DescopeClient from "@descope/node-sdk";
 import express from "express";
+import * as dotenv from "dotenv";
+dotenv.config();
 
 const descopeClient = DescopeClient({
   projectId: process.env.APP_PROJECT_ID,
