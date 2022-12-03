@@ -1,8 +1,9 @@
 import DescopeClient from "@descope/node-sdk";
 import express from "express";
 
+console.log(process.env);
 const descopeClient = DescopeClient({
-  projectId: "P2GS2SZcIPxk07orSImcmfItZzbE",
+  projectId: process.env.APP_PROJECT_ID,
 });
 const app = express();
 
