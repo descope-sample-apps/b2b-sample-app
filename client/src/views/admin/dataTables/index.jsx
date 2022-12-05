@@ -22,7 +22,7 @@ export default function Settings() {
 	});
 
 	if (!data.loaded) {
-		fetch("/api/data", {
+		fetch("/data", {
 			method: "get",
 			headers: {
 				Accept: "application/json, text/plain, */*",
