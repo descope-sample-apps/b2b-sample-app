@@ -4,7 +4,7 @@ import * as dotenv from "dotenv";
 dotenv.config();
 
 const descopeClient = DescopeClient({
-  projectId: process.env.PROJECT_ID,
+  projectId: process.env.REACT_APP_PROJECT_ID,
 });
 const app = express();
 

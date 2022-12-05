@@ -6,4 +6,4 @@ client/build
 **/.env
 .replit
 replit.nix
-
+server/dist
