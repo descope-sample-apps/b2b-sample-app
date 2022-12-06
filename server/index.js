@@ -17,14 +17,12 @@ app.use(cookieParser());
 
 app.get("/data", async (request, response) => {
   const cookies = request.cookies;
-  console.log(cookies);
   const session_token = cookies.DS; // extract from request. The value is stored typically in DS cookie.
   const refresh_token = cookies.DSR; // optional parameter, extract from request. The value is stored typically in DSR cookie.
 
   let roles = [];
 
   try {
-    console.log(session_token);
     const out = await descopeClient.validateSession(session_token);
     Object.keys(out.token.tenants).forEach((tenantId) => {
       console.log(tenantId);
