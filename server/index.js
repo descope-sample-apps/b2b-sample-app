@@ -25,7 +25,6 @@ app.get("/data", async (request, response) => {
   try {
     const out = await descopeClient.validateSession(session_token);
     Object.keys(out.token.tenants).forEach((tenantId) => {
-      console.log(tenantId);
       roles = roles.concat(out.token.tenants[tenantId].roles);
     });
     let base_data = { columns: [], check: [], complex: [], development: [] };
@@ -235,7 +234,6 @@ app.get("/data", async (request, response) => {
       );
     }
 
-    console.log(roles);
     response.status(200).json({
       body: base_data,
       query: request.query,
