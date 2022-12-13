@@ -1,13 +1,12 @@
 import { Box, SimpleGrid } from "@chakra-ui/react";
-import DevelopmentTable from "views/admin/dataTables/components/DevelopmentTable";
 import CheckTable from "views/admin/dataTables/components/CheckTable";
 import ColumnsTable from "views/admin/dataTables/components/ColumnsTable";
 import ComplexTable from "views/admin/dataTables/components/ComplexTable";
+import DevelopmentTable from "views/admin/dataTables/components/DevelopmentTable";
 import {
-	columnsDataDevelopment,
 	columnsDataCheck,
 	columnsDataColumns,
-	columnsDataComplex,
+	columnsDataComplex, columnsDataDevelopment
 } from "views/admin/dataTables/variables/columnsData";
 
 import { useState } from "react";
@@ -20,8 +19,9 @@ export default function Settings() {
 		complex: [],
 		loaded: false,
 	});
-
+		
 	if (!data.loaded) {
+		// TODO - load data once, in useEffect
 		fetch("/data", {
 			method: "get",
 			headers: {
@@ -31,6 +31,7 @@ export default function Settings() {
 		})
 			.then((res) => res.json())
 			.then((res) => {
+				// TODO - clean console.log from app
 				console.log(res);
 				res.body.loaded = true;
 				setData(res.body);

@@ -29,12 +29,13 @@ export default function DescopeSignUp() {
 					</Heading>
 				</Box>
 				<Descope
-					flowId={process.env.REACT_APP_SIGN_UP_FLOW || "sign-up"}
+					flowId={process.env.REACT_APP_DESCOPE_SIGN_UP_FLOW_ID || "sign-up"}
 					onSuccess={(e) => {
 						console.log("Success!" + JSON.stringify(e.detail.user));
 						history.push("/admin");
 					}}
 					onError={(e) => console.log("Error!")}
+					theme="light"
 				/>
 			</Flex>
 		</DefaultAuth>

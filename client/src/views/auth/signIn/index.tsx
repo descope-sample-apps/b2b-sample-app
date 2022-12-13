@@ -1,4 +1,4 @@
-import { Box, Flex, Heading, useColorModeValue, useColorMode } from "@chakra-ui/react";
+import { Box, Flex, Heading, useColorMode, useColorModeValue } from "@chakra-ui/react";
 import { Descope } from "@descope/react-sdk";
 import illustration from "assets/img/auth/auth.png";
 import DefaultAuth from "layouts/auth/Default";
@@ -31,12 +31,13 @@ export default function DescopeSignIn() {
 				</Box>
 				<Descope
 					// theme={ colorMode }
-					flowId={process.env.REACT_APP_SIGN_IN_FLOW || "sign-in"}
+					flowId={process.env.REACT_APP_DESCOPE_SIGN_IN_FLOW_ID || "sign-in"}
 					onSuccess={(e) => {
 						console.log("Success!" + JSON.stringify(e.detail.user));
 						history.push("/admin");
 					}}
 					onError={(e) => console.log("Error!")}
+					theme="light"
 				/>
 			</Flex>
 		</DefaultAuth>

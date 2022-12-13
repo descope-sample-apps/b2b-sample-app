@@ -6,8 +6,8 @@ import {
 	useColorModeValue
 } from '@chakra-ui/react';
 import { useAuth } from "@descope/react-sdk";
-import { getDisplayName } from "../../utils/user";
 import { useHistory } from "react-router-dom";
+import { getDisplayName } from "../../utils/user";
 
 export default function ProfileButtonMenu() {
 	const { user, logout, authenticated } = useAuth();
@@ -73,7 +73,7 @@ export default function ProfileButtonMenu() {
 						</Flex>
 					</>
 				)}
-				{!authenticated && process.env.REACT_APP_SIGN_UP_FLOW && (
+				{!authenticated && process.env.REACT_APP_DESCOPE_SIGN_UP_FLOW_ID && (
 					<Flex flexDirection="column" p="10px">
 						<MenuItem
 							_hover={{ bg: "none" }}

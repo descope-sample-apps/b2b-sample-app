@@ -1,30 +1,30 @@
 import DescopeClient from "@descope/node-sdk";
-import express from "express";
-import * as dotenv from "dotenv";
 import cookieParser from "cookie-parser";
+import * as dotenv from "dotenv";
+import express from "express";
 
 dotenv.config();
 
 const descopeClient = DescopeClient({
-  projectId: process.env.REACT_APP_PROJECT_ID,
+  projectId: process.env.DESCOPE_PROJECT_ID,
+  baseUrl: process.env.DESCOPE_BASE_URL
 });
 const app = express();
 
-console.log("server starting... ");
-app.use(express.static("../client/build"));
-const port = 8080;
+const port = 4000;
+console.log(`server starting on port ${port}... `);
+
 app.use(cookieParser());
 
 app.get("/data", async (request, response) => {
   const cookies = request.cookies;
   const session_token = cookies.DS; // extract from request. The value is stored typically in DS cookie.
-  const refresh_token = cookies.DSR; // optional parameter, extract from request. The value is stored typically in DSR cookie.
 
   let roles = [];
 
   try {
     const out = await descopeClient.validateSession(session_token);
-    Object.keys(out.token.tenants).forEach((tenantId) => {
+    Object.keys(out.token.tenants || []).forEach((tenantId) => {
       roles = roles.concat(out.token.tenants[tenantId].roles);
     });
     let base_data = { columns: [], check: [], complex: [], development: [] };
@@ -236,14 +236,16 @@ app.get("/data", async (request, response) => {
 
     response.status(200).json({
       body: base_data,
+      // TODO - remove request/cookies data from response json
       query: request.query,
       cookies: request.cookies,
     });
   } catch (error) {
     console.log("unauthenticated user");
     console.log(error);
-    response.status(403).json({
+    response.status(401).json({
       body: {},
+      // TODO - remove request/cookies data from response json
       query: request.query,
       cookies: request.cookies,
     });

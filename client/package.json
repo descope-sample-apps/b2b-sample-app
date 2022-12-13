@@ -8,7 +8,7 @@
 		"@chakra-ui/react": "1.8.8",
 		"@chakra-ui/system": "^1.12.1",
 		"@chakra-ui/theme-tools": "^1.3.6",
-		"@descope/react-sdk": "0.0.52-alpha.17",
+		"@descope/react-sdk": "0.0.52-alpha.24",
 		"@emotion/cache": "^11.7.1",
 		"@emotion/react": "^11.4.1",
 		"@emotion/styled": "^11.3.0",
@@ -45,6 +45,7 @@
 		"predeploy": "npm run build",
 		"deploy": "gh-pages -d build"
 	},
+	"proxy": "http://localhost:4000",
 	"eslintConfig": {
 		"extends": [
 			"react-app",
