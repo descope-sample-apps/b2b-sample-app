@@ -21,7 +21,7 @@ export default function Conversion(props: { [x: string]: any }) {
 				w='100%'
 				mb='8px'>
 				<Text color={textColor} fontSize='md' fontWeight='600' mt='4px'>
-					Your Pie Chart
+					Market Breakdown
 				</Text>
 				<Select fontSize='sm' variant='subtle' defaultValue='monthly' width='unset' fontWeight='700'>
 					<option value='daily'>Daily</option>

@@ -30,7 +30,7 @@ export default function UserReports() {
 							icon={<Icon w='32px' h='32px' as={MdBarChart} color={brandColor} />}
 						/>
 					}
-					name='Earnings'
+					name='Revenue'
 					value='$350.4'
 				/>
 				<MiniStatistics
@@ -42,10 +42,10 @@ export default function UserReports() {
 							icon={<Icon w='32px' h='32px' as={MdAttachMoney} color={brandColor} />}
 						/>
 					}
-					name='Spend this month'
+					name='Pipeline'
 					value='$642.39'
 				/>
-				<MiniStatistics growth='+23%' name='Sales' value='$574.34' />
+				<MiniStatistics growth='+23%' name='New Pipeline' value='$574.34' />
 				<MiniStatistics
 					endContent={
 						<Flex me='-16px' mt='10px'>
@@ -59,7 +59,7 @@ export default function UserReports() {
 							</Select>
 						</Flex>
 					}
-					name='Your balance'
+					name='Top Market'
 					value='$1,000'
 				/>
 				<MiniStatistics
@@ -71,7 +71,7 @@ export default function UserReports() {
 							icon={<Icon w='28px' h='28px' as={MdAddTask} color='white' />}
 						/>
 					}
-					name='New Tasks'
+					name='New Deals'
 					value='154'
 				/>
 				<MiniStatistics
