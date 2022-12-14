@@ -93,13 +93,13 @@ export default function CheckTable(props: { columnsData: any; tableData: any }) 
 												</Text>
 											</Flex>
 										);
-									} else if (cell.column.Header === 'QUANTITY') {
+									} else if (cell.column.Header === 'CUSTOMERS') {
 										data = (
 											<Text color={textColor} fontSize='sm' fontWeight='700'>
 												{cell.value}
 											</Text>
 										);
-									} else if (cell.column.Header === 'DATE') {
+									} else if (cell.column.Header === 'MOST RECENT DEAL') {
 										data = (
 											<Text color={textColor} fontSize='sm' fontWeight='700'>
 												{cell.value}

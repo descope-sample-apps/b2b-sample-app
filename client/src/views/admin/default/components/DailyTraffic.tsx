@@ -25,10 +25,10 @@ export default function DailyTraffic(props: { [x: string]: any }) {
 					</Flex>
 					<Flex align='end'>
 						<Text color={textColor} fontSize='34px' fontWeight='700' lineHeight='100%'>
-							2.579
+							2,579
 						</Text>
 						<Text ms='6px' color='secondaryGray.600' fontSize='sm' fontWeight='500'>
-							Visitors
+							Active Deals
 						</Text>
 					</Flex>
 				</Flex>

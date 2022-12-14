@@ -8,11 +8,11 @@ export const columnsDataCheck = [
     accessor: "progress",
   },
   {
-    Header: "QUANTITY",
+    Header: "CUSTOMERS",
     accessor: "quantity",
   },
   {
-    Header: "DATE",
+    Header: "MOST RECENT DEAL",
     accessor: "date",
   },
 ];

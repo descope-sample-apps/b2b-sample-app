@@ -12,7 +12,7 @@ import SignUpCentered from 'views/auth/signUp';
 
 const routes = [
 	{
-		name: 'Main Dashboard',
+		name: 'Your Rev Dashboard',
 		layout: '/admin',
 		path: '/default',
 		icon: <Icon as={MdHome} width='20px' height='20px' color='inherit' />,
