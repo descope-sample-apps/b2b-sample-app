@@ -26,7 +26,7 @@ export default function DailyTraffic(props: { [x: string]: any }) {
 							2,579
 						</Text>
 						<Text ms='6px' color='secondaryGray.600' fontSize='sm' fontWeight='500'>
-							Visitors
+							Active Deals
 						</Text>
 					</Flex>
 				</Flex>
