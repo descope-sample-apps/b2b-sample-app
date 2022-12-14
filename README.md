@@ -30,7 +30,7 @@ The server is now running on `http://localhost:4000`
 # Your project id
 REACT_APP_DESCOPE_PROJECT_ID=<project-id>
 # Flow id to run on sign in, default is sign-in
-REACT_APP_DESCOPE_SIGN_IN_FLOW_ID=sign-up
+REACT_APP_DESCOPE_SIGN_IN_FLOW_ID=sign-in
 # Optional - Flow id to run on sign up, default is sign-up
 REACT_APP_DESCOPE_SIGN_UP_FLOW_ID=sign-up
 # Optional - Descope base url, e.g. https://api.descope.com, https://api.sandbox.descope.com or http://localhost:8000
