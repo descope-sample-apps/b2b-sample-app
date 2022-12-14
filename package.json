@@ -1,0 +1,15 @@
+{
+	"name": "descope-sample-b2b",
+	"version": "0.1.0",
+	"description": "",
+  "scripts": {
+    "client": "cd client && npm run start",
+    "server": "cd server && npm run start",
+    "start": "concurrently \"npm run client\" \"npm run server\" "
+  },
+	"author": "descope",
+	"license": "MIT",
+	"devDependencies": {
+		"concurrently": "^7.6.0"
+	}
+}
