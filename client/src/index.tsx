@@ -10,13 +10,13 @@ import RTLLayout from "./layouts/rtl";
 import theme from "./theme/theme";
 
 const App = () => {
-  const { authenticated, me } = useAuth();
-  useEffect(() => {
-    if (authenticated) {
-      // when the app is loaded - get logged in user details
-      me();
-    }
-  }, [authenticated]);
+	const { authenticated, me } = useAuth();
+	useEffect(() => {
+		if (authenticated) {
+		// when the app is loaded - get logged in user details
+		me();
+		}
+	}, [authenticated]);
 
   return (
     <ChakraProvider theme={theme}>
@@ -34,12 +34,24 @@ const App = () => {
   );
 };
 
+const AppRoot = () => {
+	const queryParams = new URLSearchParams(window.location.search)
+	const projectId = queryParams.get("projectId") || localStorage.getItem('projectId');
+	if (projectId) {
+	  localStorage.setItem('projectId', projectId);
+	}
+	console.log("starting...");
+	console.log(projectId);
+	return (
+		<AuthProvider
+			projectId={projectId || process.env.REACT_APP_DESCOPE_PROJECT_ID}
+		>
+		 <App />
+		</AuthProvider>
+	)
+  }
+  
 ReactDOM.render(
-  <AuthProvider
-    projectId={process.env.REACT_APP_DESCOPE_PROJECT_ID}
-    baseUrl={process.env.REACT_APP_DESCOPE_BASE_URL}
-  >
-    <App />
-  </AuthProvider>,
-  document.getElementById("root")
+	<AppRoot />,
+  	document.getElementById("root")
 );
