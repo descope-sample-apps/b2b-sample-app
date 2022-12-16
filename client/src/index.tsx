@@ -36,15 +36,16 @@ const App = () => {
 
 const AppRoot = () => {
 	const queryParams = new URLSearchParams(window.location.search)
-	const projectId = queryParams.get("projectId") || localStorage.getItem('projectId');
-	if (projectId) {
-	  localStorage.setItem('projectId', projectId);
+	if (queryParams.get("projectId")) {
+		localStorage.setItem('projectId', queryParams.get("projectId"));
 	}
+	const projectId = localStorage.getItem('projectId') || process.env.REACT_APP_DESCOPE_PROJECT_ID
+
 	console.log("starting...");
-	console.log(projectId);
+	console.log(`projectId=${projectId}`);
 	return (
 		<AuthProvider
-			projectId={projectId || process.env.REACT_APP_DESCOPE_PROJECT_ID}
+			projectId={projectId}
 		>
 		 <App />
 		</AuthProvider>

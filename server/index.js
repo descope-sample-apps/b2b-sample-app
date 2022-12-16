@@ -5,10 +5,6 @@ import express from "express";
 
 dotenv.config();
 
-const descopeClient = DescopeClient({
-  projectId: process.env.DESCOPE_PROJECT_ID,
-  baseUrl: process.env.DESCOPE_BASE_URL
-});
 const app = express();
 
 const port = 4000;
@@ -17,9 +13,16 @@ console.log(`server starting on port ${port}... `);
 app.use(cookieParser());
 
 app.get("/data", async (request, response) => {
+  const projectId = request.headers['x-project-id'] || process.env.DESCOPE_PROJECT_ID;
+  console.log(`projectId=${projectId}`);
   const cookies = request.cookies;
   const session_token = cookies.DS; // extract from request. The value is stored typically in DS cookie.
 
+  const descopeClient = DescopeClient({
+    projectId: projectId,
+    baseUrl: process.env.DESCOPE_BASE_URL
+  });
+  
   let roles = [];
 
   try {
