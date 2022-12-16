@@ -1,18 +1,9 @@
 import DescopeClient from "@descope/node-sdk";
-import cookieParser from "cookie-parser";
 import * as dotenv from "dotenv";
-import express from "express";
 
 dotenv.config();
 
-const app = express();
-
-const port = 4000;
-console.log(`server starting on port ${port}... `);
-
-app.use(cookieParser());
-
-app.get("/data", async (request, response) => {
+export default async function handler(request, response) {
   const projectId = request.headers['x-project-id'] || process.env.DESCOPE_PROJECT_ID;
   console.log(`projectId=${projectId}`);
   const cookies = request.cookies;
@@ -254,12 +245,5 @@ app.get("/data", async (request, response) => {
     });
     response.send();
   }
-});
+}
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
-});
-
-// export default async function handler(request, response) {
-
-//   }
