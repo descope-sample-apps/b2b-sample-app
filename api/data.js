@@ -4,7 +4,7 @@ import * as dotenv from "dotenv";
 dotenv.config();
 
 export default async function handler(request, response) {
-  const projectId = request.headers['x-project-id'] || process.env.DESCOPE_PROJECT_ID;
+  const projectId = request.headers['x-project-id'] || process.env.REACT_APP_DESCOPE_PROJECT_ID;
   console.log(`projectId=${projectId}`);
   const cookies = request.cookies;
   const session_token = cookies.DS; // extract from request. The value is stored typically in DS cookie.
