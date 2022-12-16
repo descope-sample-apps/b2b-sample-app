@@ -19,7 +19,7 @@ export default function Settings() {
 		complex: [],
 		loaded: false,
 	});
-		
+	const projectId = localStorage.getItem('projectId') || process.env.REACT_APP_DESCOPE_PROJECT_ID;
 	if (!data.loaded) {
 		// TODO - load data once, in useEffect
 		fetch("/data", {
@@ -27,6 +27,7 @@ export default function Settings() {
 			headers: {
 				Accept: "application/json, text/plain, */*",
 				"Content-Type": "application/json",
+				"x-project-id": projectId
 			},
 		})
 			.then((res) => res.json())
