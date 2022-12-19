@@ -36,8 +36,8 @@ const App = () => {
 
 const AppRoot = () => {
 	const queryParams = new URLSearchParams(window.location.search)
-	if (queryParams.get("projectId")) {
-		localStorage.setItem('projectId', queryParams.get("projectId"));
+	if (queryParams.get("projectid")) {
+		localStorage.setItem('projectId', queryParams.get("projectid"));
 	}
 	const projectId = localStorage.getItem('projectId') || process.env.REACT_APP_DESCOPE_PROJECT_ID
 
