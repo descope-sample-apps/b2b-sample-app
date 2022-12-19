@@ -8,6 +8,8 @@ import {
 	columnsDataColumns,
 	columnsDataComplex, columnsDataDevelopment
 } from "views/admin/dataTables/variables/columnsData";
+import { Descope } from "@descope/react-sdk";
+import { useHistory } from "react-router-dom";
 
 import { useState } from "react";
 
@@ -29,19 +31,35 @@ export default function Settings() {
 				"Content-Type": "application/json",
 				"x-project-id": projectId
 			},
+		}).then(async (res) => {
+			const resJson = await res.json();
+			if (res.status === 200){ 
+				console.log("200")
+				
+				resJson.body.loaded = true;
+				setData(resJson.body);
+			} 
+			if (res.status === 401){ 
+				console.log("401")
+				resJson.body.loaded = false;
+
+			} 
+	
 		})
-			.then((res) => res.json())
-			.then((res) => {
-				// TODO - clean console.log from app
-				console.log(res);
-				res.body.loaded = true;
-				setData(res.body);
-			})
-			.catch((err) => console.log(err));
+			// .then((res) => res.json())
+			// .then((res) => {
+			// 	// TODO - clean console.log from app
+			// 	console.log(res);
+			// 	res.body.loaded = true;
+			// 	setData(res.body);
+			// })
+			// .catch((err) => console.log("error"));
 	}
+	let history = useHistory();
 
 	// Chakra Color Mode
 	return (
+		(data.loaded)? 
 		<Box pt={{ base: "130px", md: "80px", xl: "80px" }}>
 			<SimpleGrid
 				mb="20px"
@@ -63,5 +81,18 @@ export default function Settings() {
 				/>
 			</SimpleGrid>
 		</Box>
+	:
+	<Box pt={{ base: "130px", md: "80px", xl: "80px" }}>
+			<Descope
+				flowId="sign-in"
+				onSuccess={(e) => {
+					console.log("Success!" + JSON.stringify(e.detail.user));
+					history.push("/data-tables");
+				}}
+				onError={(e) => console.log("Error!")}
+				theme="light"
+			/>
+
+	</Box>
 	);
 }
