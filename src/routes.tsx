@@ -1,9 +1,9 @@
 import { Icon } from '@chakra-ui/react';
-import { MdBarChart, MdHome, MdLock, MdOutlineShoppingCart } from 'react-icons/md';
+import { MdBarChart, MdHome, MdLock } from 'react-icons/md';
 
 // Admin Imports
 import MainDashboard from 'views/admin/default';
-import NFTMarketplace from 'views/admin/marketplace';
+// import NFTMarketplace from 'views/admin/marketplace';
 import DataTables from 'views/admin/dataTables';
 
 // Auth Imports
@@ -18,14 +18,15 @@ const routes = [
 		icon: <Icon as={MdHome} width='20px' height='20px' color='inherit' />,
 		component: MainDashboard
 	},
-	{
-		name: 'NFT Marketplace',
-		layout: '/admin',
-		path: '/nft-marketplace',
-		icon: <Icon as={MdOutlineShoppingCart} width='20px' height='20px' color='inherit' />,
-		component: NFTMarketplace,
-		secondary: true
-	},
+	// We can add it in furure by removing this comment
+	// {
+	// 	name: 'NFT Marketplace',
+	// 	layout: '/admin',
+	// 	path: '/nft-marketplace',
+	// 	icon: <Icon as={MdOutlineShoppingCart} width='20px' height='20px' color='inherit' />,
+	// 	component: NFTMarketplace,
+	// 	secondary: true
+	// },
 	{
 		name: 'Data Tables',
 		layout: '/admin',
