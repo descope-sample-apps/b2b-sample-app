@@ -15,6 +15,7 @@ export default function ProfileButtonMenu() {
 
 	function logoutUser() {
 		logout();
+		localStorage.clear();
 		// this is a temp solution until the SDK is fixed and the logout is done properly
 		window.location.href = "/";
 	}

@@ -17,7 +17,7 @@ const App = () => {
 		me();
 		}
 	}, [authenticated]);
-
+	let user = JSON.parse(localStorage.getItem('logedInUserDetails'));
   return (
     <ChakraProvider theme={theme}>
       <React.StrictMode>
@@ -26,7 +26,12 @@ const App = () => {
             <Route path={`/auth`} component={AuthLayout} />
             <Route path={`/admin`} component={AdminLayout} />
             <Route path={`/rtl`} component={RTLLayout} />
-            <Redirect from="/" to="/admin" />
+            {
+				user ? 
+				<Redirect from="/" to="/admin" />
+				:
+				<Redirect from="/" to="/auth" />
+			}
           </Switch>
         </HashRouter>
       </React.StrictMode>

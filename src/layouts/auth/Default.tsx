@@ -28,7 +28,7 @@ function AuthIllustration(props: { children: JSX.Element | string; illustrationB
 				ps={{ xl: '70px' }}
 				justifyContent='start'
 				direction='column'>
-				<NavLink
+				{/* <NavLink
 					to='/admin'
 					style={() => ({
 						width: 'fit-content',
@@ -40,7 +40,7 @@ function AuthIllustration(props: { children: JSX.Element | string; illustrationB
 							Back to Simmmple
 						</Text>
 					</Flex>
-				</NavLink>
+				</NavLink> */}
 				{children}
 				<Box
 					display={{ base: 'none', md: 'block' }}

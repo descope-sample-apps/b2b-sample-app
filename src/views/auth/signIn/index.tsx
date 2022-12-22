@@ -33,7 +33,7 @@ export default function DescopeSignIn() {
 					// theme={ colorMode }
 					flowId={process.env.REACT_APP_DESCOPE_SIGN_IN_FLOW_ID || "sign-in"}
 					onSuccess={(e) => {
-						console.log("Success!" + JSON.stringify(e.detail.user));
+						localStorage.setItem('logedInUserDetails', JSON.stringify(e.detail.user))
 						history.push("/admin");
 					}}
 					onError={(e) => console.log("Error!")}
