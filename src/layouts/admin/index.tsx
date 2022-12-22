@@ -15,13 +15,11 @@ import { useHistory } from "react-router-dom";
 export default function Dashboard(props: { [x: string]: any }) {
 	const { authenticated } = useAuth();
 	let history = useHistory();
-
 	useEffect(() => {
-		console.log('authenticated', authenticated);
 		if (!authenticated) {
 			history.push("/auth");
-		}
-	}, [])
+		 }
+	},[authenticated]);
 	const { ...rest } = props;
 	// states and functions
 	const [ fixed ] = useState(false);

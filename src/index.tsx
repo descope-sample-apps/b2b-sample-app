@@ -17,7 +17,7 @@ const App = () => {
 		me();
 		}
 	}, [authenticated]);
-	let user = JSON.parse(localStorage.getItem('logedInUserDetails'));
+
   return (
     <ChakraProvider theme={theme}>
       <React.StrictMode>
@@ -26,12 +26,7 @@ const App = () => {
             <Route path={`/auth`} component={AuthLayout} />
             <Route path={`/admin`} component={AdminLayout} />
             <Route path={`/rtl`} component={RTLLayout} />
-            {
-				user ? 
-				<Redirect from="/" to="/admin" />
-				:
-				<Redirect from="/" to="/auth" />
-			}
+			<Redirect from="/" to="/admin" />
           </Switch>
         </HashRouter>
       </React.StrictMode>
@@ -46,8 +41,6 @@ const AppRoot = () => {
 	}
 	const projectId = localStorage.getItem('projectId') || process.env.REACT_APP_DESCOPE_PROJECT_ID
 
-	console.log("starting...");
-	console.log(`projectId=${projectId}`);
 	return (
 		<AuthProvider
 			projectId={projectId}
