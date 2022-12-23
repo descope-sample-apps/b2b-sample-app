@@ -27,7 +27,7 @@ export default function Conversion(props: { [x: string]: any }) {
 				/>
 
 				<Text color={textColor} fontSize='lg' fontWeight='700'>
-					Tasks
+					Your Tasks
 				</Text>
 				<Menu ms='auto' />
 			</Flex>
@@ -35,35 +35,35 @@ export default function Conversion(props: { [x: string]: any }) {
 				<Flex mb='20px'>
 					<Checkbox me='16px' colorScheme='brandScheme' />
 					<Text fontWeight='bold' color={textColor} fontSize='md' textAlign='start'>
-						Landing Page Design
+						Sentrigo follow-up
 					</Text>
 					<Icon ms='auto' as={MdDragIndicator} color='secondaryGray.600' w='24px' h='24px' />
 				</Flex>
 				<Flex mb='20px'>
 					<Checkbox me='16px' defaultChecked colorScheme='brandScheme' />
 					<Text fontWeight='bold' color={textColor} fontSize='md' textAlign='start'>
-						Dashboard Builder
+						Descope onboarding
 					</Text>
 					<Icon ms='auto' as={MdDragIndicator} color='secondaryGray.600' w='24px' h='24px' />
 				</Flex>
 				<Flex mb='20px'>
 					<Checkbox defaultChecked me='16px' colorScheme='brandScheme' />
 					<Text fontWeight='bold' color={textColor} fontSize='md' textAlign='start'>
-						Mobile App Design
+						Solidcore onboarding
 					</Text>
 					<Icon ms='auto' as={MdDragIndicator} color='secondaryGray.600' w='24px' h='24px' />
 				</Flex>
 				<Flex mb='20px'>
 					<Checkbox me='16px' colorScheme='brandScheme' />
 					<Text fontWeight='bold' color={textColor} fontSize='md' textAlign='start'>
-						Illustrations
+						Quarterly update
 					</Text>
 					<Icon ms='auto' as={MdDragIndicator} color='secondaryGray.600' w='24px' h='24px' />
 				</Flex>
 				<Flex mb='20px'>
 					<Checkbox defaultChecked me='16px' colorScheme='brandScheme' />
 					<Text fontWeight='bold' color={textColor} fontSize='md' textAlign='start'>
-						Promotional LP
+						Swim in coffee
 					</Text>
 					<Icon ms='auto' as={MdDragIndicator} color='secondaryGray.600' w='24px' h='24px' />
 				</Flex>

@@ -1,8 +1,8 @@
-// Daily Traffic Dashboards Default
+// Deal Traffic Dashboards Default
 
 export const barChartDataDailyTraffic = [
 	{
-		name: 'Daily Traffic',
+		name: 'Deal Traffic',
 		data: [ 20, 30, 40, 20, 45, 50, 30 ]
 	}
 ];
@@ -307,7 +307,7 @@ export const barChartOptionsConsumption: any = {
 };
 
 export const pieChartOptions: any = {
-	labels: [ 'Your files', 'System', 'Empty' ],
+	labels: [ 'US', 'Canada', 'Other Markets' ],
 	colors: [ '#4318FF', '#6AD2FF', '#EFF4FB' ],
 	chart: {
 		width: '50px'

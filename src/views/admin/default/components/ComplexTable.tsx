@@ -33,7 +33,7 @@ export default function ColumnsTable(props: { columnsData: any; tableData: any }
 		<Card flexDirection='column' w='100%' px='0px' overflowX={{ sm: 'scroll', lg: 'hidden' }}>
 			<Flex px='25px' justify='space-between' mb='10px' align='center'>
 				<Text color={textColor} fontSize='22px' fontWeight='700' lineHeight='100%'>
-					Complex Table
+					Priority Deals
 				</Text>
 				<Menu />
 			</Flex>
@@ -80,20 +80,20 @@ export default function ColumnsTable(props: { columnsData: any; tableData: any }
 													h='24px'
 													me='5px'
 													color={
-														cell.value === 'Approved' ? (
+														cell.value === 'Signed' ? (
 															'green.500'
-														) : cell.value === 'Disable' ? (
+														) : cell.value === 'At Risk' ? (
 															'red.500'
-														) : cell.value === 'Error' ? (
+														) : cell.value === 'Gone Cold' ? (
 															'orange.500'
 														) : null
 													}
 													as={
-														cell.value === 'Approved' ? (
+														cell.value === 'Signed' ? (
 															MdCheckCircle
-														) : cell.value === 'Disable' ? (
+														) : cell.value === 'At Risk' ? (
 															MdCancel
-														) : cell.value === 'Error' ? (
+														) : cell.value === 'Gone Cold' ? (
 															MdOutlineError
 														) : null
 													}

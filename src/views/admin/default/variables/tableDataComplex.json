@@ -1,25 +1,25 @@
 [
   {
-    "name":"Horizon UI PRO",
-    "status": "Approved",
+    "name":"Descope",
+    "status": "Signed",
     "date": "18 Apr 2022",
     "progress": 75.5  
   },
   {
-    "name":"Horizon UI Free",
-    "status": "Disable",
+    "name":"Demisto",
+    "status": "At Risk",
     "date": "18 Apr 2022",
     "progress": 25.5  
   },
   {
-    "name":"Marketplace",
-    "status": "Error",
+    "name":"Sentrigo",
+    "status": "Gone Cold",
     "date": "20 May 2021",
     "progress": 90  
   },
   {
-    "name":"Weekly Updates",
-    "status": "Approved",
+    "name":"Solidcore",
+    "status": "Signed",
     "date": "12 Jul 2021",
     "progress": 50.5  
   }
