@@ -110,7 +110,7 @@ export default function UserReports() {
 							icon={<Icon w='32px' h='32px' as={MdFileCopy} color={brandColor} />}
 						/>
 					}
-					name='Total Projects'
+					name='Total Deals'
 					value='2935'
 				/>
 			</SimpleGrid>

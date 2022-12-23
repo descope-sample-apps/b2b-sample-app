@@ -20,7 +20,7 @@ export default function DailyTraffic(props: { [x: string]: any }) {
 				<Flex flexDirection='column' align='start' me='20px'>
 					<Flex w='100%'>
 						<Text me='auto' color='secondaryGray.600' fontSize='sm' fontWeight='500'>
-							Daily Traffic
+							Deal Traffic
 						</Text>
 					</Flex>
 					<Flex align='end'>

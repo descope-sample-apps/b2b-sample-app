@@ -30,7 +30,7 @@ export default function CheckTable(props: { columnsData: any; tableData: any }) 
 		<Card flexDirection='column' w='100%' px='0px' overflowX={{ sm: 'scroll', lg: 'hidden' }}>
 			<Flex px='25px' justify='space-between' align='center'>
 				<Text color={textColor} fontSize='22px' fontWeight='700' lineHeight='100%'>
-					Check Table
+					Revenue by Product
 				</Text>
 				<Menu />
 			</Flex>

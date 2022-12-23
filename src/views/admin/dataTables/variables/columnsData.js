@@ -4,11 +4,11 @@ export const columnsDataDevelopment = [
     accessor: "name",
   },
   {
-    Header: "TECH",
+    Header: "Platform",
     accessor: "tech",
   },
   {
-    Header: "DATE",
+    Header: "Release Date",
     accessor: "date",
   },
   {
