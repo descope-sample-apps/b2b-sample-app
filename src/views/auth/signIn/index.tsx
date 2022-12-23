@@ -8,7 +8,6 @@ export default function DescopeSignIn() {
 	const textColor = useColorModeValue("navy.700", "white");
 	let history = useHistory();
 	const { colorMode } = useColorMode()
-	console.log(colorMode)
 	return (
 		<DefaultAuth illustrationBackground={illustration} image={illustration}>
 			<Flex
@@ -33,7 +32,6 @@ export default function DescopeSignIn() {
 					// theme={ colorMode }
 					flowId={process.env.REACT_APP_DESCOPE_SIGN_IN_FLOW_ID || "sign-in"}
 					onSuccess={(e) => {
-						console.log("Success!" + JSON.stringify(e.detail.user));
 						history.push("/admin");
 					}}
 					onError={(e) => console.log("Error!")}

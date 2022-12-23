@@ -1,6 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import routes from 'routes';
+import { useAuth } from "@descope/react-sdk";
+import { useHistory } from "react-router-dom";
 
 // Chakra imports
 import { Box, useColorModeValue } from '@chakra-ui/react';
@@ -12,6 +14,14 @@ import { SidebarContext } from 'contexts/SidebarContext';
 export default function Auth() {
 	// states and functions
 	const [ toggleSidebar, setToggleSidebar ] = useState(false); 
+	const { authenticated } = useAuth();
+	let history = useHistory();
+	
+	useEffect(() => {
+		if (authenticated) {
+			history.push("/admin");
+		 }
+	},[authenticated]);
 	const getRoute = () => {
 		return window.location.pathname !== '/auth/full-screen-maps';
 	};
