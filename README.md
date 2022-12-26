@@ -14,8 +14,8 @@ After the first-time configuration, you can
 ```env
 # Your project id
 REACT_APP_DESCOPE_PROJECT_ID=<project-id>
-# Optional - Descope base url, e.g. http://localhost:8000
-DESCOPE_BASE_URL=http://localhost:8000
+# Optional - Descope base url. In order to use this option, you should setup a custom domain
+REACT_APP_DESCOPE_BASE_URL=https://auth.myapp.com
 ```
 3. Start the client - `npm run start`
 

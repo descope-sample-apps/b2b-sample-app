@@ -26,7 +26,7 @@ const App = () => {
             <Route path={`/auth`} component={AuthLayout} />
             <Route path={`/admin`} component={AdminLayout} />
             <Route path={`/rtl`} component={RTLLayout} />
-			<Redirect from="/" to="/admin" />
+						<Redirect from="/" to="/admin" />
           </Switch>
         </HashRouter>
       </React.StrictMode>
@@ -44,6 +44,7 @@ const AppRoot = () => {
 	return (
 		<AuthProvider
 			projectId={projectId}
+			baseUrl={process.env.REACT_APP_DESCOPE_BASE_URL}
 		>
 		 <App />
 		</AuthProvider>
