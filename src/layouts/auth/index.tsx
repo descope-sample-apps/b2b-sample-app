@@ -9,6 +9,7 @@ import { Box, useColorModeValue } from '@chakra-ui/react';
 
 // Layout components
 import { SidebarContext } from 'contexts/SidebarContext';
+import WelcomeModal from 'components/welcomeModal/WelcomeModal';
 
 // Custom Chakra theme
 export default function Auth() {
@@ -45,6 +46,7 @@ export default function Auth() {
 	document.documentElement.dir = 'ltr';
 	return (
 		<Box>
+			<WelcomeModal/>
 			<SidebarContext.Provider
 				value={{
 					toggleSidebar,
