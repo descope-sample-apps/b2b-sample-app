@@ -17,6 +17,7 @@ export default function WelcomeModal() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const textColor = useColorModeValue('secondaryGray.1000', 'white');
   const closeIconColor = useColorModeValue('blue.60', 'white');
+  const modalHeaderColor = useColorModeValue('blue.60', 'brand.400');
   const showModal = () => {
     setIsModalOpen(true);
   };
@@ -40,7 +41,7 @@ export default function WelcomeModal() {
         >
           <ModalHeader
             textAlign={"center"}
-            color={"#4318FF"}
+            color={modalHeaderColor}
             // fontFamily={"Barlow"}
             fontWeight={800}
             fontSize={42}
