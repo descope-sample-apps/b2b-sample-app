@@ -34,40 +34,6 @@ export default function Footer() {
 					</Link>
 				</Text>
 			</Text>
-			<List display='flex'>
-				<ListItem
-					me={{
-						base: '20px',
-						md: '44px'
-					}}>
-					<Link fontWeight='500' color={textColor} href='mailto:hello@simmmple.com'>
-						Support
-					</Link>
-				</ListItem>
-				<ListItem
-					me={{
-						base: '20px',
-						md: '44px'
-					}}>
-					<Link fontWeight='500' color={textColor} href='https://www.simmmple.com/licenses'>
-						License
-					</Link>
-				</ListItem>
-				<ListItem
-					me={{
-						base: '20px',
-						md: '44px'
-					}}>
-					<Link fontWeight='500' color={textColor} href='https://simmmple.com/terms-of-service'>
-						Terms of Use
-					</Link>
-				</ListItem>
-				<ListItem>
-					<Link fontWeight='500' color={textColor} href='https://www.blog.simmmple.com/'>
-						Blog
-					</Link>
-				</ListItem>
-			</List>
 		</Flex>
 	);
 }
