@@ -1,6 +1,13 @@
 import { Box, Button, Flex, Text } from "@chakra-ui/react";
-
+import { useEffect } from "react";
+import "prismjs/themes/prism-tomorrow.css";
+import Prism from 'prismjs';
 export const Sdk = () => {
+
+  useEffect(() => {
+    Prism.highlightAll()
+  }, [])
+
   // The code snippet you want to highlight, as a string
   const code = `// Import Descope SDK
 import descopeSdk from '@descope/web-js-sdk';

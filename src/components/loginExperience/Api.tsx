@@ -1,8 +1,14 @@
 import { Box, Button, Flex, Text } from "@chakra-ui/react";
+import "prismjs/themes/prism-tomorrow.css";
+import Prism from 'prismjs';
+import { useEffect } from "react";
 
 export const Api = () => {
   // The code snippet you want to highlight, as a string
 
+  useEffect(() => {
+    Prism.highlightAll()
+  }, [])
   const codeApi = `// Rest API call for signup or signin user
   
   curl -i -X POST 
