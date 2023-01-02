@@ -18,7 +18,8 @@ export default function Footer() {
 			}}
 			justifyContent='space-between'
 			px={{ base: '30px', md: '0px' }}
-			pb='30px'>
+			pb='30px'
+			bottom={0}>
 			<Text
 				color={textColor}
 				textAlign={{
