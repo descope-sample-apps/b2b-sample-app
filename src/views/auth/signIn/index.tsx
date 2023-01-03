@@ -1,8 +1,10 @@
-import {  Box, Flex, Heading, useColorMode, useColorModeValue } from "@chakra-ui/react";
+import {  Box, Flex, Heading, Image, useColorMode, useColorModeValue } from "@chakra-ui/react";
 import { Descope } from "@descope/react-sdk";
 import illustration from "assets/img/auth/app_login.svg";
+import { LoginExperience } from "components/loginExperience/LoginExperience";
 import DefaultAuth from "layouts/auth/Default";
 import { useHistory } from "react-router-dom";
+import logo from "../../../assets/img/auth/dolrr_logo.svg";
 
 export default function DescopeSignIn() {
     const textColor = useColorModeValue("navy.700", "white");
@@ -10,34 +12,45 @@ export default function DescopeSignIn() {
     const { colorMode } = useColorMode();
     return (
         <DefaultAuth illustrationBackground={illustration} image={illustration}>
+            <>
+            <Box display={{ lg: "none", sm: "block" }} h={'5%'}>
+                    <Image src={logo} alt="logo" h="60%" w="100%" />
+            </Box>
             <Flex
-                maxW={{ base: "100%", md: "max-content" }}
-                w="100%"
+                // maxW={{ base: "100%", md: "max-content" }}
+                // w="100%"
+                overflowY={{ lg: "auto" }}
+                w={{ lg: "72%", sm: "100%" }}      
                 mx={{ base: "auto", lg: "0px" }}
                 me="auto"
                 h="100%"
+                display='block'
                 alignItems="start"
                 justifyContent="center"
-                mb={{ base: "30px", md: "60px" }}
+                mb={{ base: "30px", md: "0px" }}
                 px={{ base: "25px", md: "0px" }}
                 mt={{ base: "40px", md: "14vh" }}
                 flexDirection="column"
             >
-                <Box me="auto">
+                <Box me="auto" w={{ lg: "60%", sm: "100%" }} style={{display: 'flex', justifyContent: 'center'}} >
                     <Heading color={textColor} fontSize="36px" mb="10px">
                         Sign In
                     </Heading>
                 </Box>
-                <Descope
-                    // theme={ colorMode }
-                    flowId={process.env.REACT_APP_DESCOPE_SIGN_IN_FLOW_ID || "sign-in"}
-                    onSuccess={(e) => {
-                        history.push("/admin");
-                    }}
-                    onError={(e) => console.log("Error!")}
-                    theme="light"
-                />
+                <Box me="auto" w={{ lg: "60%", sm: "100%" }} height='fit-content'>
+                    <Descope
+                        // theme={ colorMode }
+                        flowId={process.env.REACT_APP_DESCOPE_SIGN_IN_FLOW_ID || "sign-in"}
+                        onSuccess={(e) => {
+                            history.push("/admin");
+                        }}
+                        onError={(e) => console.log("Error!")}
+                        theme="light"
+                    />
+                </Box>
+            <LoginExperience />
             </Flex>
+            </>
         </DefaultAuth>
     );
 }

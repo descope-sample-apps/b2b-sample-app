@@ -23,12 +23,12 @@ export const columnsDataCheck = [
     accessor: "name",
   },
   {
-    Header: "PROGRESS",
-    accessor: "progress",
+    Header: "QUOTA",
+    accessor: "quota",
   },
   {
-    Header: "QUANTITY",
-    accessor: "quantity",
+    Header: "COMMISSION",
+    accessor: "commission",
   },
   {
     Header: "DATE",
