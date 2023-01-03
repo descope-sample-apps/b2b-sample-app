@@ -1,8 +1,32 @@
-import { Box, Button, Flex, Image, Text } from "@chakra-ui/react";
+import { Box, Button, Flex, Image, Modal, ModalBody, ModalCloseButton, ModalContent, useColorModeValue, ModalOverlay, Text } from "@chakra-ui/react";
+import React from "react";
 import flow_image from "../../../src/assets/img/explanationDailogue/flow.jpg";
 
 export const Flows = () => {
+  const [imagePreview, setImagePreview] = React.useState(false);
+  const closeIconColor = useColorModeValue('blue.60', 'white');
+
+  const showImage = () => {
+    setImagePreview(!imagePreview);
+  }
   return (
+    <>
+     <Modal isOpen={imagePreview} onClose={showImage} size="xl" isCentered>
+     <ModalOverlay />
+     <ModalContent
+          maxWidth={"90%"}
+          boxShadow={"8px 8px 12px rgb(117 81 255 / 68%)"}
+          opacity={0.95}
+          borderRadius={14}
+        >
+          <ModalCloseButton 
+          color={closeIconColor} 
+          style={{boxShadow: 'none'}}/>
+          <ModalBody padding={0}>
+          <Image src={flow_image} className="img-flow" />
+          </ModalBody>
+          </ModalContent>
+      </Modal>
     <Flex direction={{ sm: "column", md: "row" }}>
       <Box w={{ sm: "100%", md: "50%" }} mr="9px">
         <Text paddingBottom="36px">
@@ -31,7 +55,7 @@ export const Flows = () => {
         marginTop={{ sm: "0", md: "-42px" }}
         w={{ sm: "100%", md: "50%" }}
       >
-        <Image src={flow_image} className="img-flow" />
+        <Image src={flow_image} className="img-flow" height={'100%'} cursor='pointer' onClick={showImage}/>
       </Box>
       <Box pt="20px">
         <a
@@ -53,5 +77,6 @@ export const Flows = () => {
         </a>
       </Box>
     </Flex>
+    </>
   );
 };
