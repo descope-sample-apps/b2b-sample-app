@@ -2,6 +2,8 @@ import { Box, Button, Flex, Text } from "@chakra-ui/react";
 import { useEffect } from "react";
 import "prismjs/themes/prism-tomorrow.css";
 import Prism from 'prismjs';
+import 'assets/css/ExplanationScroll.css';
+
 export const Sdk = () => {
 
   useEffect(() => {

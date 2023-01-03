@@ -2,6 +2,7 @@ import { Box, Button, Flex, Text } from "@chakra-ui/react";
 import "prismjs/themes/prism-tomorrow.css";
 import Prism from 'prismjs';
 import { useEffect } from "react";
+import 'assets/css/ExplanationScroll.css';
 
 export const Api = () => {
   // The code snippet you want to highlight, as a string

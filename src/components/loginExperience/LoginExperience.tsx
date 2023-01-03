@@ -13,19 +13,11 @@ import {
   Text,
   useColorModeValue,
 } from "@chakra-ui/react";
-// import "prismjs/themes/prism-tomorrow.css";
-// import Prism, {highlightAll} from "prismjs";
-import { useEffect } from "react";
 import { Flows } from "./Flows";
 import { Sdk } from "./Sdk";
 import { Api } from "./Api";
 
 export function LoginExperience() {
-  const tabColor = useColorModeValue("brandTabs.1000", "white");
-  useEffect(() => {
-    // Prism.highlightAll();
-    // highlightAll();
-  }, []);
   return (
     <Accordion
       // defaultIndex={[0]}
