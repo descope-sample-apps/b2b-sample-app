@@ -50,7 +50,6 @@ function AuthIllustration(props: {
             borderBottomLeftRadius={{ lg: "120px", xl: "200px" }}
           />
         </Box>
-        <Footer />
       </Flex>
       <FixedPlugin />
     </Flex>
