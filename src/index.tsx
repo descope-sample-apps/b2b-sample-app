@@ -9,6 +9,15 @@ import AuthLayout from "./layouts/auth";
 import RTLLayout from "./layouts/rtl";
 import theme from "./theme/theme";
 
+/* eslint-disable */
+declare global {
+	interface Window {
+	  analytics?: any;
+	}
+  }
+  /* eslint-enable */
+
+  
 const App = () => {
 	const { authenticated, me } = useAuth();
 	useEffect(() => {
@@ -40,6 +49,7 @@ const AppRoot = () => {
 		localStorage.setItem('projectId', queryParams.get("project"));
 	}
 	const projectId = localStorage.getItem('projectId') || process.env.REACT_APP_DESCOPE_PROJECT_ID
+	window.analytics.page({projectId: projectId});
 
 	return (
 		<AuthProvider

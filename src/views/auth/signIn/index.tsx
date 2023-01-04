@@ -47,6 +47,10 @@ export default function DescopeSignIn() {
                         // theme={ colorMode }
                         flowId={process.env.REACT_APP_DESCOPE_SIGN_IN_FLOW_ID || "sign-up-or-in"}
                         onSuccess={(e) => {
+							window.analytics.identify(e.detail.user.userId, {
+								name: e.detail.user.name, //user trait
+								email: e.detail.user.email, //user trait
+							  });				
                             history.push("/admin");
                         }}
                         onError={(e) => console.log("Error!")}
