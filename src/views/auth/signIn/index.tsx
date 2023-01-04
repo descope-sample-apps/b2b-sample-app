@@ -40,7 +40,7 @@ export default function DescopeSignIn() {
                 <Box me="auto" w={{ lg: "60%", sm: "100%" }} height='fit-content'>
                     <Descope
                         // theme={ colorMode }
-                        flowId={process.env.REACT_APP_DESCOPE_SIGN_IN_FLOW_ID || "sign-in"}
+                        flowId={process.env.REACT_APP_DESCOPE_SIGN_IN_FLOW_ID || "sign-up-or-in"}
                         onSuccess={(e) => {
                             history.push("/admin");
                         }}
