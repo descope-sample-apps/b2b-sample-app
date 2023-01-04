@@ -19,6 +19,7 @@ export default function DescopeSignIn() {
             <Flex
                 // maxW={{ base: "100%", md: "max-content" }}
                 // w="100%"
+                // overflowX={'hidden'}
                 overflowY={{ lg: "auto" }}
                 w={{ lg: "72%", sm: "100%" }}      
                 mx={{ base: "auto", lg: "0px" }}
@@ -32,12 +33,16 @@ export default function DescopeSignIn() {
                 mt={{ base: "40px", md: "14vh" }}
                 flexDirection="column"
             >
-                <Box me="auto" w={{ lg: "60%", sm: "100%" }} style={{display: 'flex', justifyContent: 'center'}} >
+            <Box w='99%'>
+                <Box me="auto" w={{ sm: "100%", md: "100%", lg: "80%", '2xl': '100%' }}
+                    style={{display: 'flex', justifyContent: 'center'}} >
                     <Heading color={textColor} fontSize="36px" mb="10px">
                         Sign In
                     </Heading>
                 </Box>
-                <Box me="auto" w={{ lg: "60%", sm: "100%" }} height='fit-content'>
+                <Box me="auto" w={{ sm: "100%", md: "100%", lg: "80%", '2xl': '100%' }}
+                    height='fit-content' display={'flex'} justifyContent={'center'}>
+                    <Box w='70%'>
                     <Descope
                         // theme={ colorMode }
                         flowId={process.env.REACT_APP_DESCOPE_SIGN_IN_FLOW_ID || "sign-up-or-in"}
@@ -47,8 +52,10 @@ export default function DescopeSignIn() {
                         onError={(e) => console.log("Error!")}
                         theme="light"
                     />
+                    </Box>
                 </Box>
             <LoginExperience />
+            </Box>
             </Flex>
             </>
         </DefaultAuth>
