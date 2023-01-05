@@ -20,11 +20,12 @@ function AuthIllustration(props: {
           xl: "97vh",
         }}
         w="100%"
-        maxW={{ md: "66%", lg: "1313px" }}
+        maxW={{ md: "95%", lg: "100%" }}
         mx="auto"
+        textAlign={{ sm: "center" }}
         pt={{ sm: "50px", md: "0px" }}
         px={{ lg: "30px", xl: "0px" }}
-        ps={{ xl: "70px" }}
+        ps={{ xl: "1px" }}
         justifyContent="start"
         direction="column"
       >
