@@ -27,7 +27,8 @@ export function LoginExperience() {
       // ml={{ sm: "0", md: "0", lg: "-81px" }}
       // w={{ sm: "100%", md: "100%", lg: "53%" }}
       ml={{ sm: "0", md: "0", lg: "0" }}
-      w={{ sm: "100%", md: "100%", lg: "80%", '2xl': '100%' }}
+      paddingLeft='1em'
+      w={{ sm: "100%", md: "100%", lg: "84%", "2xl": "100%" }}
     >
       <AccordionItem>
         <Text
@@ -53,7 +54,7 @@ export function LoginExperience() {
             pb={{ md: "18px", sm: "18px" }}
             textAlign="center"
             pt={{ md: "18px", sm: "18px" }}
-            color='#170A2C'
+            color="#170A2C"
           >
             This login experience was built using Descope Flows. You also have
             several other ways of implementing login with Descope – choose
