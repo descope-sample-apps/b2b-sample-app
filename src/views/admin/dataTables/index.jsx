@@ -10,6 +10,7 @@ import {
 } from "views/admin/dataTables/variables/columnsData";
 
 import { useState } from "react";
+import { AdminExperience } from "components/adminExperience/index";
 
 export default function Settings() {
 	const [data, setData] = useState({
@@ -62,6 +63,9 @@ export default function Settings() {
 					tableData={data.complex}
 				/>
 			</SimpleGrid>
+			<Box display={'flex'} justifyContent={'center'}>
+					<AdminExperience/>
+			</Box>
 		</Box>
 	);
 }
