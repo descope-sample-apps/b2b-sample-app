@@ -59,11 +59,12 @@ export default function DescopeSignIn() {
             >
               <Box w="70%">
                 <Descope
-                  // theme={ colorMode }
                   flowId={
                     process.env.REACT_APP_DESCOPE_SIGN_IN_FLOW_ID ||
                     "sign-up-or-in"
                   }
+                  // use debug flag to show flow errors and addtional debugging information
+                  // debug={true} 
                   onSuccess={(e) => {
                     window.analytics.identify(e.detail.user.userId, {
                       name: e.detail.user.name, //user trait
@@ -72,8 +73,8 @@ export default function DescopeSignIn() {
                     history.push("/admin");
                   }}
                   onError={(e) => console.log("Error!")}
-                  theme="light"
-                />
+                  theme={ colorMode }
+                  />
               </Box>
             </Box>
             <LoginExperience />
