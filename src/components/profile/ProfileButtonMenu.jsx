@@ -15,6 +15,9 @@ export default function ProfileButtonMenu() {
 
 	function logoutUser() {
 		logout();
+		localStorage.removeItem('ajs_user_traits');
+		localStorage.removeItem('ajs_user_id');
+		localStorage.removeItem('ajs_anonymous_id');
 		// this is a temp solution until the SDK is fixed and the logout is done properly
 		window.location.href = "/";
 	}
