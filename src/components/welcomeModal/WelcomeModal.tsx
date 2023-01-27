@@ -85,7 +85,6 @@ export default function WelcomeModal() {
               </Text>
               <UnorderedList marginLeft='2em'>
                 <ListItem color={textColor}>Try signing up</ListItem>
-                <ListItem color={textColor}>Try checking out after ordering more than 10 T-shirts</ListItem>
               </UnorderedList>
             </Box>
           </ModalBody>
