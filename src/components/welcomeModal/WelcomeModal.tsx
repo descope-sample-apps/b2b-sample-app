@@ -69,7 +69,7 @@ export default function WelcomeModal() {
               //   fontFamily={"Robot"}
               pb={43}
             >
-              Currently using Descope Flows from Project ID: {localStorage.getItem('projectId') ? localStorage.getItem('projectId') : '(Descope Default)'}
+              Currently using Descope Flows from Project ID: {localStorage.getItem('projectId') ? localStorage.getItem('projectId') : 'Descope default project'}
             </Text>
             <Box
               color={"#170A2C"}
