@@ -57,9 +57,19 @@ export default function WelcomeModal() {
               fontWeight={500}
               fontSize={22}
               //   fontFamily={"Robot"}
+              // pb={20}
+            >
+              This is a sample B2B app built by Descope.
+            </Text>
+            <Text
+              textAlign={"center"}
+              me='auto' color={textColor}
+              // fontWeight={500}
+              fontSize={22}
+              //   fontFamily={"Robot"}
               pb={43}
             >
-              This is a sample consumer app built by Descope.
+              Currently using Descope Flows from Project ID: {localStorage.getItem('projectId') ? localStorage.getItem('projectId') : 'Descope default project'}
             </Text>
             <Box
               color={"#170A2C"}
@@ -75,7 +85,6 @@ export default function WelcomeModal() {
               </Text>
               <UnorderedList marginLeft='2em'>
                 <ListItem color={textColor}>Try signing up</ListItem>
-                <ListItem color={textColor}>Try checking out after ordering more than 10 T-shirts</ListItem>
               </UnorderedList>
             </Box>
           </ModalBody>
