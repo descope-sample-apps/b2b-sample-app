@@ -1,5 +1,5 @@
 import { ChakraProvider } from "@chakra-ui/react";
-import { AuthProvider, useAuth } from "@descope/react-sdk";
+import { AuthProvider, useSession, useUser} from "@descope/react-sdk";
 import React, { useEffect } from "react";
 import ReactDOM from "react-dom";
 import { HashRouter, Redirect, Route, Switch } from "react-router-dom";
@@ -19,13 +19,15 @@ declare global {
 
   
 const App = () => {
-	const { authenticated, me } = useAuth();
-	useEffect(() => {
-		if (authenticated) {
-		// when the app is loaded - get logged in user details
-		me();
-		}
-	}, [authenticated]);
+	const { isAuthenticated, isSessionLoading} = useSession()
+	// const { user } = useUser();
+
+	// useEffect(() => {
+	// 	if (isAuthenticated) {
+	// 	// when the app is loaded - get logged in user details
+	// 	me();
+	// 	}
+	// }, [isAuthenticated]);
 
   return (
     <ChakraProvider theme={theme}>
