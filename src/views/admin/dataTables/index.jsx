@@ -32,7 +32,7 @@ export default function Settings() {
 				Accept: "application/json, text/plain, */*",
 				"Content-Type": "application/json",
 				"x-project-id": projectId,
-				Authorization: 'Bearer '+sessionToken,
+				Authorization: `Bearer ${sessionToken}`,
 			},
 		})
 			.then((res) => res.json())
