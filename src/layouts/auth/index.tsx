@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import routes from 'routes';
-import { useAuth } from "@descope/react-sdk";
+import { useSession } from "@descope/react-sdk";
 import { useHistory } from "react-router-dom";
 
 // Chakra imports
@@ -15,14 +15,14 @@ import WelcomeModal from 'components/welcomeModal/WelcomeModal';
 export default function Auth() {
 	// states and functions
 	const [ toggleSidebar, setToggleSidebar ] = useState(false); 
-	const { authenticated } = useAuth();
+	const { isAuthenticated } = useSession();
 	let history = useHistory();
 	
 	useEffect(() => {
-		if (authenticated) {
+		if (isAuthenticated) {
 			history.push("/admin");
 		 }
-	},[authenticated]);
+	},[isAuthenticated]);
 	const getRoute = () => {
 		return window.location.pathname !== '/auth/full-screen-maps';
 	};

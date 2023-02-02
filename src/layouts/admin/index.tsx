@@ -8,18 +8,18 @@ import { SidebarContext } from 'contexts/SidebarContext';
 import { useEffect, useState } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import routes from 'routes';
-import { useAuth } from "@descope/react-sdk";
+import { useSession } from "@descope/react-sdk";
 import { useHistory } from "react-router-dom";
 
 // Custom Chakra theme
 export default function Dashboard(props: { [x: string]: any }) {
-	const { authenticated } = useAuth();
+	const { isAuthenticated } = useSession();
 	let history = useHistory();
 	useEffect(() => {
-		if (!authenticated) {
+		if (!isAuthenticated) {
 			history.push("/auth");
 		 }
-	},[authenticated]);
+	},[isAuthenticated]);
 	const { ...rest } = props;
 	// states and functions
 	const [ fixed ] = useState(false);
