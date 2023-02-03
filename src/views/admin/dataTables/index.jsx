@@ -12,6 +12,7 @@ import { useHistory } from "react-router-dom";
 import { useState } from "react";
 import { AdminExperience } from "components/adminExperience/index";
 import { Descope } from "@descope/react-sdk";
+import { getSessionToken } from '@descope/react-sdk';
 
 export default function Settings() {
 	const [data, setData] = useState({
@@ -26,6 +27,8 @@ export default function Settings() {
 
 	const [authenticationFlow, setAuthenticationFlow] = useState(false);
 	const projectId = localStorage.getItem('projectId') || process.env.REACT_APP_DESCOPE_PROJECT_ID;
+	const sessionToken = getSessionToken();
+
 	if (!data.loaded) {
 		// TODO - load data once, in useEffect
 		fetch("/api/data", {
@@ -33,7 +36,8 @@ export default function Settings() {
 			headers: {
 				Accept: "application/json, text/plain, */*",
 				"Content-Type": "application/json",
-				"x-project-id": projectId
+				"x-project-id": projectId,
+				Authorization: `Bearer ${sessionToken}`,
 			},
 		})
 			.then((res) => {

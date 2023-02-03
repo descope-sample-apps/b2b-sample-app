@@ -5,18 +5,18 @@ import {
 	Text,
 	useColorModeValue
 } from '@chakra-ui/react';
-import { useAuth } from "@descope/react-sdk";
+import { useUser, useDescope, useSession } from "@descope/react-sdk";
 import { useHistory } from "react-router-dom";
 import { getDisplayName } from "../../utils/user";
 
 export default function ProfileButtonMenu() {
-	const { user, logout, authenticated } = useAuth();
+	const { isAuthenticated } = useSession();
+	const { user } = useUser()
+	const { logout } = useDescope();
 	let history = useHistory();
 
 	function logoutUser() {
 		logout();
-		// this is a temp solution until the SDK is fixed and the logout is done properly
-		window.location.href = "/";
 	}
 	
 	let menuBg = useColorModeValue('white', 'navy.800');
@@ -42,7 +42,7 @@ export default function ProfileButtonMenu() {
 				bg={menuBg}
 				border="none"
 			>
-				{authenticated && (
+				{isAuthenticated && (
 					<>
 						<Flex w="100%" mb="0px">
 							<Text
@@ -73,7 +73,7 @@ export default function ProfileButtonMenu() {
 						</Flex>
 					</>
 				)}
-				{!authenticated && process.env.REACT_APP_DESCOPE_SIGN_UP_FLOW_ID && (
+				{!isAuthenticated && process.env.REACT_APP_DESCOPE_SIGN_UP_FLOW_ID && (
 					<Flex flexDirection="column" p="10px">
 						<MenuItem
 							_hover={{ bg: "none" }}
@@ -86,7 +86,7 @@ export default function ProfileButtonMenu() {
 						</MenuItem>
 					</Flex>
 				)}
-				{!authenticated && (
+				{!isAuthenticated && (
 					<Flex flexDirection="column" p="10px">
 						<MenuItem
 							_hover={{ bg: "none" }}
