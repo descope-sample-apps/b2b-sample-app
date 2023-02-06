@@ -45,7 +45,7 @@ const AppRoot = () => {
 		localStorage.setItem("baseUrl", queryParams.get("baseurl"));
 	}
 	const projectId = localStorage.getItem("projectId") || process.env.REACT_APP_DESCOPE_PROJECT_ID;
-	const projectId = localStorage.getItem("baseUrl") || process.env.REACT_APP_DESCOPE_BASE_URL;
+	const baseUrl = localStorage.getItem("baseUrl") || process.env.REACT_APP_DESCOPE_BASE_URL;
 	window.analytics.page({ projectId: projectId });
 
 	return (
