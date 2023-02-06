@@ -41,11 +41,15 @@ const AppRoot = () => {
 	if (queryParams.get("project")) {
 		localStorage.setItem("projectId", queryParams.get("project"));
 	}
+	if (queryParams.get("baseurl")) {
+		localStorage.setItem("baseUrl", queryParams.get("baseurl"));
+	}
 	const projectId = localStorage.getItem("projectId") || process.env.REACT_APP_DESCOPE_PROJECT_ID;
+	const baseUrl = localStorage.getItem("baseUrl") || process.env.REACT_APP_DESCOPE_BASE_URL;
 	window.analytics.page({ projectId: projectId });
 
 	return (
-		<AuthProvider projectId={projectId}>
+		<AuthProvider projectId={projectId} baseUrl={baseUrl}>
 			<App />
 		</AuthProvider>
 	);
