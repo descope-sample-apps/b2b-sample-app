@@ -41,7 +41,7 @@ const AppRoot = () => {
 	if (queryParams.get("project")) {
 		localStorage.setItem("projectId", queryParams.get("project"));
 	}
-	if (queryParams.get("baseUrl")) {
+	if (queryParams.get("baseurl")) {
 		localStorage.setItem("baseUrl", queryParams.get("baseurl"));
 	}
 	const projectId = localStorage.getItem("projectId") || process.env.REACT_APP_DESCOPE_PROJECT_ID;
