@@ -30,7 +30,6 @@ export default function Settings() {
 	const sessionToken = getSessionToken();
 
 	if (!data.loaded) {
-		// TODO - load data once, in useEffect
 		fetch("/api/data", {
 			method: "get",
 			headers: {
@@ -40,24 +39,24 @@ export default function Settings() {
 				Authorization: `Bearer ${sessionToken}`,
 			},
 		})
-			.then((res) => {
-				if (res.status === 404) {
-					setAuthenticationFlow(true);
-				} 
-				res.json();
-			})
-			.then((res) => {
-				// TODO - clean console.log from app
-				if (res) {
-					res.body.loaded = true;
-					setData(res.body);
-					setAuthenticationFlow(false);
-				}
-			})
-			.catch((err) => console.log('err => ', err));
+		.then((response) => {
+			if (response.status === 401) {
+				setAuthenticationFlow(true);
+			}  else {
+				setAuthenticationFlow(false);
+				return  response.json();
+			}
+		})
+		.then((res) => {
+			if (res) {
+				res.body.loaded = true;
+				setData(res.body);
+				setAuthenticationFlow(false);
+			}
+		})
+		.catch((err) => console.log('err => ', err));
 	}
 
-	// Chakra Color Mode
 	return (
 		<Box pt={{ base: "130px", md: "80px", xl: "80px" }}>
 			<SimpleGrid
@@ -69,13 +68,12 @@ export default function Settings() {
 					authenticationFlow ? 
 					<Box margin={'auto'} width='50%'>
 						<Descope
-						flowId={
-						process.env.REACT_APP_DESCOPE_SIGN_IN_FLOW_ID ||
-						"step-up"
-						}
+						flowId="step-up"
 						onSuccess={(e) => {
 							console.log('success => ', e)
-						//   history.push("/admin/data-tables");
+							history.push("/data-tables");
+							// return <Navigate to="/data-tables" replace={true} />
+
 						}}
 						onError={(e) => console.log("Error!")}
 						theme={ colorMode }
