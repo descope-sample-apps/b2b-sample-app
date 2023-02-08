@@ -72,7 +72,7 @@ export default function DevelopmentTable(props: { columnsData: any; tableData: a
 												{cell.value}
 											</Text>
 										);
-									} else if (cell.column.Header === 'TECH') {
+									} else if (cell.column.Header === 'Platform') {
 										data = (
 											<Flex align='center'>
 												{cell.value.map((item: string, key: number) => {
@@ -109,7 +109,7 @@ export default function DevelopmentTable(props: { columnsData: any; tableData: a
 												})}
 											</Flex>
 										);
-									} else if (cell.column.Header === 'DATE') {
+									} else if (cell.column.Header === 'Release Date') {
 										data = (
 											<Text color={textColor} fontSize='sm' fontWeight='700'>
 												{cell.value}
