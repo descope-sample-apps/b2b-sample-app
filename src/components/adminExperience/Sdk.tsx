@@ -11,23 +11,23 @@ export const Sdk = () => {
   }, [])
 
   // The code snippet you want to highlight, as a string
-  const code = `// Import Descope SDK
-import descopeSdk from '@descope/web-js-sdk';
+  const code = 
+`import DescopeClient from "@descope/node-sdk";
 
-//Create SDK with project_id
-const sdk = descopeSdk({ projectId: <project_id> });
+// Acquiring the authorization header sent by the client
+const header = request.headers['authorization'];
+const session_token = header?.split(" ")[1] ?? "";
 
-// user object with user details from the form
-user = { "name": "Joe Person", "phone": "555-555-5555", "email": "email@company.com"};
+const descopeClient = DescopeClient({projectId: YOUR_PROJECT_ID});
 
-// identifier for the user to send the OTP to
-identifier = "email@company.com";
+const out = await descopeClient.validateSession(session_token);
 
-// Delivery Method
-delivery_method = "email";
-
-// Call the function for signing up user
-resp = await sdk.otp.signUpOrIn[delivery_method].(identifier, user);
+const stepUpCOnfirmed = (out.token.su === "yes")
+if (stepUpCOnfirmed) {
+  // step up confirmed
+} else {
+  // step up needed
+}
 `;
   return (
     <Flex direction={{ sm: "column", md: "row" }}>
@@ -80,8 +80,7 @@ resp = await sdk.otp.signUpOrIn[delivery_method].(identifier, user);
         marginTop={{ sm: "0", md: "-42px" }}
         w={{ sm: "100%", md: "50%" }}
       >
-        {/* New code can be added here */}
-        {/* <pre style={{ margin: 0, overflow: 'auto' }}>
+        <pre style={{ margin: 0, overflow: 'auto' }}>
           <code
             className={`language-javascript`}
             // style={{ "overflow-y": "scroll" }}
@@ -89,7 +88,7 @@ resp = await sdk.otp.signUpOrIn[delivery_method].(identifier, user);
           >
             {code}
           </code>
-        </pre> */}
+        </pre>
       </Box>
       <Box pt="20px" display={{ sm: "block", md: "none" }}>
         <a
