@@ -27,7 +27,10 @@ export default function WelcomeModal() {
   };
 
   useEffect(() => {
-    showModal();
+    if (sessionStorage.getItem("firstVisit") !== "1") {
+      showModal();
+      sessionStorage.setItem("firstVisit", "1");
+    }
   }, []);
   return (
     <Box>
