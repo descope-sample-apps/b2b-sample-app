@@ -13,13 +13,15 @@ import { useHistory } from "react-router-dom";
 
 // Custom Chakra theme
 export default function Dashboard(props: { [x: string]: any }) {
-	const { isAuthenticated } = useSession();
+	const { isAuthenticated , isSessionLoading} = useSession();
 	let history = useHistory();
 	useEffect(() => {
-		if (!isAuthenticated) {
+		console.log({isSessionLoading, isAuthenticated})
+		if (!isAuthenticated && !isSessionLoading) {
+			console.log("moving to /auth")
 			history.push("/auth");
 		 }
-	},[isAuthenticated]);
+	},[isAuthenticated , isSessionLoading]);
 	const { ...rest } = props;
 	// states and functions
 	const [ fixed ] = useState(false);
