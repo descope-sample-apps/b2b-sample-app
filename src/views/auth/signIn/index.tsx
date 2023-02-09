@@ -57,7 +57,7 @@ export default function DescopeSignIn() {
               display={"flex"}
               justifyContent={"center"}
             >
-              <Box w="70%">
+              <Box w="70%" maxW="500px">
                 <Descope
                   flowId={
                     process.env.REACT_APP_DESCOPE_SIGN_IN_FLOW_ID ||

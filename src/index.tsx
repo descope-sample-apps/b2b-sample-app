@@ -18,8 +18,6 @@ declare global {
 /* eslint-enable */
 
 const App = () => {
-	const { isAuthenticated, isSessionLoading } = useSession();
-
 	return (
 		<ChakraProvider theme={theme}>
 			<React.StrictMode>
@@ -38,13 +36,15 @@ const App = () => {
 
 const AppRoot = () => {
 	const queryParams = new URLSearchParams(window.location.search);
-	if (queryParams.get("project")) {
-		localStorage.setItem("projectId", queryParams.get("project"));
+	const projectId = queryParams.get("project") || localStorage.getItem('projectId');
+	if (projectId !== localStorage.getItem('projectId')) {
+	  localStorage.removeItem("DSR")
+	  localStorage.removeItem("DS")
+	  localStorage.setItem('projectId', projectId);
 	}
 	if (queryParams.get("baseurl")) {
 		localStorage.setItem("baseUrl", queryParams.get("baseurl"));
 	}
-	const projectId = localStorage.getItem("projectId") || process.env.REACT_APP_DESCOPE_PROJECT_ID;
 	const baseUrl = localStorage.getItem("baseUrl") || process.env.REACT_APP_DESCOPE_BASE_URL;
 	window.analytics.page({ projectId: projectId });
 
