@@ -20,9 +20,9 @@ const session_token = header?.split(" ")[1] ?? "";
 
 const descopeClient = DescopeClient({projectId: YOUR_PROJECT_ID});
 
-const out = await descopeClient.validateSession(session_token);
+const jwt = await descopeClient.validateSession(session_token);
 
-const stepUpCOnfirmed = (out.token.su === "yes")
+const stepUpCOnfirmed = (jwt.token.su === "yes")
 if (stepUpCOnfirmed) {
   // step up confirmed
 } else {
@@ -33,30 +33,13 @@ if (stepUpCOnfirmed) {
     <Flex direction={{ sm: "column", md: "row" }}>
       <Box w={{ sm: "100%", md: "50%" }} mr="9px">
         <Text paddingBottom="19px">
-          Descope SDKs allow you to easily integrate any passwordless
-          authentication method into your app.
+          Descope SDKs allow validate the provided session token, and extract any claims embedded on it. 
+          MFA and Step-Up are built-in claims that can be acquired as part of the validation process. 
         </Text>
         <Text paddingBottom="36px">
-          You can use Client SDKs to let Descope handle session management, or
-          Backend SDKs to directly connect your app server to our service.
+          Additional backend SDKs are available for other languages. 
         </Text>
         <Box display={{ sm: "none", md: "block" }}>
-          <a
-            href="https://docs.descope.com/build/guides/client_sdks/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <Button
-              color={"#FFFFFF"}
-              background={"#4318FF"}
-              borderRadius={"5px"}
-              w="47%"
-            _hover={{ color: "#4096ff", borderColor: "#4096ff" }}
-            >
-              Client SDKs
-            </Button>
-          </a>
-          &nbsp;&nbsp;
           <a
             href="https://docs.descope.com/build/guides/backend_sdks/"
             target="_blank"
@@ -66,7 +49,7 @@ if (stepUpCOnfirmed) {
               color={"#FFFFFF"}
               background={"#4318FF"}
               borderRadius={"5px"}
-              w="47%"
+              w="99%"
             _hover={{ color: "#4096ff", borderColor: "#4096ff" }}
             >
               Backend SDKs
