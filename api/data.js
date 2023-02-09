@@ -5,6 +5,7 @@ dotenv.config();
 
 export default async function handler(request, response) {
   const projectId = request.headers['x-project-id'] || process.env.REACT_APP_DESCOPE_PROJECT_ID;
+  console.log(`Working with ProjectId: ${projectId}`)
   
   // when using cookies
   // const cookies = request.cookies;
@@ -12,7 +13,7 @@ export default async function handler(request, response) {
   
   // when using authorization header
   const header = request.headers['authorization'];
-  const session_token = header?.split(" ")[1] ?? "" ;
+  const session_token = header?.split(" ")[1] ?? "";
 
   const descopeClient = DescopeClient({
     projectId: projectId,
@@ -26,20 +27,21 @@ export default async function handler(request, response) {
     Object.keys(out.token.tenants || []).forEach((tenantId) => {
       roles = roles.concat(out.token.tenants[tenantId].roles);
     });
+
     let base_data = { columns: [], check: [], complex: [], development: [] };
     let base_data_marketing = {
       columns: [
         {
           name: "Audit Log",
-          commission: 1024,
+          quantity: 1024,
           date: "13.Mar.2021",
-          quota: 25,
+          progress: 25,
         },
         {
           name: "Dark Mode",
-          commission: 858,
+          quantity: 858,
           date: "24.Jan.2021",
-          quota: 100,
+          progress: 100,
         },
       ],
       check: [
@@ -62,7 +64,7 @@ export default async function handler(request, response) {
           quota: 100,
         },
         {
-          name: ["Marketplace", false],
+          name: ["Marketplace", true],
           commission: 1024,
           date: "Oct 24, 2022",
           quota: 75.5,
@@ -74,7 +76,7 @@ export default async function handler(request, response) {
           quota: 75.5,
         },
         {
-          name: ["Marketplace", false],
+          name: ["Marketplace", true],
           commission: 258,
           date: "Oct 24, 2022",
           quota: 75.5,
@@ -85,13 +87,13 @@ export default async function handler(request, response) {
           name: "Marketplace",
           status: "Error",
           date: "20.May.2021",
-          quota: 90,
+          progress: 90,
         },
         {
           name: "Marketplace",
           status: "Approved",
           date: "12.Jul.2021",
-          quota: 50.5,
+          progress: 50.5,
         },
       ],
       development: [
@@ -99,25 +101,25 @@ export default async function handler(request, response) {
           name: "Audit Logs",
           tech: ["apple"],
           date: "21.Feb.2021",
-          quota: 35.4,
+          progress: 35.4,
         },
         {
           name: "Dark Mode",
           tech: ["apple", "windows"],
           date: "13.Mar.2021",
-          quota: 25,
+          progress: 25,
         },
         {
           name: "Automated Billing",
           tech: ["apple", "android", "windows"],
           date: "24.Jan.2021",
-          quota: 100,
+          progress: 100,
         },
         {
           name: "Analytics",
           tech: ["apple", "windows"],
           date: "Oct 24, 2022",
-          quota: 75.5,
+          progress: 75.5,
         },
       ],
     };
@@ -126,15 +128,15 @@ export default async function handler(request, response) {
       columns: [
         {
           name: "Marketplace",
-          commission: 2458,
+          quantity: 2458,
           date: "12.Jan.2021",
-          quota: 75.5,
+          progress: 75.5,
         },
         {
           name: "Analytics",
-          commission: 1485,
+          quantity: 1485,
           date: "21.Feb.2021",
-          quota: 35.4,
+          progress: 35.4,
         },
       ],
       check: [
@@ -174,13 +176,13 @@ export default async function handler(request, response) {
           name: "Marketplace",
           status: "Approved",
           date: "24.Jan.2021",
-          quota: 75.5,
+          progress: 75.5,
         },
         {
           name: "Marketplace",
           status: "Disable",
           date: "30.Dec.2021",
-          quota: 25.5,
+          progress: 25.5,
         },
       ],
       development: [
@@ -188,67 +190,76 @@ export default async function handler(request, response) {
           name: "Marketplace",
           tech: ["apple", "android", "windows"],
           date: "12.Jan.2021",
-          quota: 75.5,
+          progress: 75.5,
         },
         {
           name: "Audit Logs",
           tech: ["apple"],
           date: "21.Feb.2021",
-          quota: 35.4,
+          progress: 35.4,
         },
         {
           name: "Dark Mode",
           tech: ["apple", "windows"],
           date: "13.Mar.2021",
-          quota: 25,
+          progress: 25,
         },
         {
           name: "Analytics",
           tech: ["apple", "android", "windows"],
           date: "24.Jan.2021",
-          quota: 100,
+          progress: 100,
         },
         {
           name: "Custom Dashboard",
           tech: ["apple", "windows"],
           date: "Oct 24, 2022",
-          quota: 75.5,
+          progress: 75.5,
         },
       ],
     };
 
+    const adminVerified = (out.token.verified === "yes")
+    
     if (roles.includes("Marketing")) {
       base_data.columns = base_data.columns.concat(base_data_marketing.columns);
       base_data.check = base_data.check.concat(base_data_marketing.check);
       base_data.complex = base_data.complex.concat(base_data_marketing.complex);
-      base_data.development = base_data.development.concat(
-        base_data_marketing.development
-      );
-    } else if (roles.includes("Customer Success")) {
+      base_data.development = base_data.development.concat(base_data_marketing.development);
+    } 
+    if (roles.includes("Customer Success")) {
       base_data.columns = base_data.columns.concat(base_data_cs.columns);
       base_data.check = base_data.check.concat(base_data_cs.check);
       base_data.complex = base_data.complex.concat(base_data_cs.complex);
-      base_data.development = base_data.development.concat(
-        base_data_cs.development
-      );
+      base_data.development = base_data.development.concat(base_data_cs.development);
+    }
+    if (adminVerified) {
+      base_data.columns = base_data.columns.concat(base_data_marketing.columns);
+      base_data.check = base_data.check.concat(base_data_marketing.check);
+      base_data.complex = base_data.complex.concat(base_data_marketing.complex);
+      base_data.development = base_data.development.concat(base_data_marketing.development);
+      base_data.columns = base_data.columns.concat(base_data_cs.columns);
+      base_data.check = base_data.check.concat(base_data_cs.check);
+      base_data.complex = base_data.complex.concat(base_data_cs.complex);
+      base_data.development = base_data.development.concat(base_data_cs.development);
+    }
+    if (roles.length===0 && !adminVerified) {
+      throw "401 Unauthorized User"
     }
 
     response.status(200).json({
       body: base_data,
-      // TODO - remove request/cookies data from response json
       query: request.query,
       cookies: request.cookies,
     });
   } catch (error) {
-    console.log("unauthenticated user");
     console.log(error);
     response.status(401).json({
       body: {},
-      // TODO - remove request/cookies data from response json
       query: request.query,
       cookies: request.cookies,
     });
-    response.send();
   }
+  response.send();
 }
 

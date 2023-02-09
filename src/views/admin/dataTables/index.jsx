@@ -1,4 +1,4 @@
-import { Box, SimpleGrid } from "@chakra-ui/react";
+import { Box, SimpleGrid, useColorMode } from "@chakra-ui/react";
 import CheckTable from "views/admin/dataTables/components/CheckTable";
 import ColumnsTable from "views/admin/dataTables/components/ColumnsTable";
 import ComplexTable from "views/admin/dataTables/components/ComplexTable";
@@ -8,9 +8,10 @@ import {
 	columnsDataColumns,
 	columnsDataComplex, columnsDataDevelopment
 } from "views/admin/dataTables/variables/columnsData";
-
+import { useHistory } from "react-router-dom";
 import { useState } from "react";
 import { AdminExperience } from "components/adminExperience/index";
+import { Descope } from "@descope/react-sdk";
 import { getSessionToken } from '@descope/react-sdk';
 
 export default function Settings() {
@@ -21,11 +22,14 @@ export default function Settings() {
 		complex: [],
 		loaded: false,
 	});
+	const { colorMode } = useColorMode();
+	let history = useHistory();
+
+	const [authenticationFlow, setAuthenticationFlow] = useState(false);
 	const projectId = localStorage.getItem('projectId') || process.env.REACT_APP_DESCOPE_PROJECT_ID;
 	const sessionToken = getSessionToken();
 
 	if (!data.loaded) {
-		// TODO - load data once, in useEffect
 		fetch("/api/data", {
 			method: "get",
 			headers: {
@@ -35,37 +39,63 @@ export default function Settings() {
 				Authorization: `Bearer ${sessionToken}`,
 			},
 		})
-			.then((res) => res.json())
-			.then((res) => {
-				// TODO - clean console.log from app
-				console.log(res);
+		.then((response) => {
+			if (response.status === 401) {
+				setAuthenticationFlow(true);
+			}  else {
+				setAuthenticationFlow(false);
+				return  response.json();
+			}
+		})
+		.then((res) => {
+			if (res) {
 				res.body.loaded = true;
 				setData(res.body);
-			})
-			.catch((err) => console.log(err));
+				setAuthenticationFlow(false);
+			}
+		})
+		.catch((err) => console.log('err => ', err));
 	}
 
-	// Chakra Color Mode
 	return (
 		<Box pt={{ base: "130px", md: "80px", xl: "80px" }}>
 			<SimpleGrid
 				mb="20px"
-				columns={{ sm: 1, md: 2 }}
+				columns={authenticationFlow ? { sm: 1, md: 1 }: { sm: 1, md: 2 }}
 				spacing={{ base: "20px", xl: "20px" }}
 			>
-				<DevelopmentTable
-					columnsData={columnsDataDevelopment}
-					tableData={data.development}
-				/>
-				<CheckTable columnsData={columnsDataCheck} tableData={data.check} />
-				<ColumnsTable
-					columnsData={columnsDataColumns}
-					tableData={data.columns}
-				/>
-				<ComplexTable
-					columnsData={columnsDataComplex}
-					tableData={data.complex}
-				/>
+				{
+					authenticationFlow ? 
+					<Box margin={'auto'} width='50%'>
+						<Descope
+						flowId="step-up"
+						onSuccess={(e) => {
+							console.log('success => ', e)
+							history.push("/data-tables");
+							// return <Navigate to="/data-tables" replace={true} />
+
+						}}
+						onError={(e) => console.log("Error!")}
+						theme={ colorMode }
+						/>
+					</Box>
+					: 
+					<>
+						<DevelopmentTable
+							columnsData={columnsDataDevelopment}
+							tableData={data.development}
+						/>
+						<CheckTable columnsData={columnsDataCheck} tableData={data.check} />
+						<ColumnsTable
+							columnsData={columnsDataColumns}
+							tableData={data.columns}
+						/>
+						<ComplexTable
+							columnsData={columnsDataComplex}
+							tableData={data.complex}
+						/>
+					</>
+				}
 			</SimpleGrid>
 			<Box display={'flex'} justifyContent={'center'}>
 					<AdminExperience/>

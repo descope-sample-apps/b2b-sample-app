@@ -76,7 +76,7 @@ export default function CheckTable(props: { columnsData: any; tableData: any }) 
 												</Text>
 											</Flex>
 										);
-									} else if (cell.column.Header === 'PROGRESS') {
+									} else if (cell.column.Header === 'QUOTA') {
 										data = (
 											<Flex align='center'>
 												<Text me='10px' color={textColor} fontSize='sm' fontWeight='700'>
@@ -84,7 +84,7 @@ export default function CheckTable(props: { columnsData: any; tableData: any }) 
 												</Text>
 											</Flex>
 										);
-									} else if (cell.column.Header === 'QUANTITY') {
+									} else if (cell.column.Header === 'COMMISSION') {
 										data = (
 											<Text color={textColor} fontSize='sm' fontWeight='700'>
 												{cell.value}
