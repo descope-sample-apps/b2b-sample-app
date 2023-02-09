@@ -49,7 +49,7 @@ const AppRoot = () => {
 	window.analytics.page({ projectId: projectId });
 
 	return (
-		<AuthProvider projectId={projectId} baseUrl={baseUrl}>
+		<AuthProvider projectId={projectId || process.env.REACT_APP_DESCOPE_PROJECT_ID} baseUrl={baseUrl}>
 			<App />
 		</AuthProvider>
 	);
