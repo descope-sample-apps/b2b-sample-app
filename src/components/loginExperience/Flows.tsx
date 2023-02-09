@@ -1,6 +1,7 @@
 import { Box, Button, Flex, Image, Modal, ModalBody, ModalCloseButton, ModalContent, useColorModeValue, ModalOverlay, Text } from "@chakra-ui/react";
 import React from "react";
 import flow_image from "../../../src/assets/img/explanationDailogue/flow.jpg";
+import 'assets/css/ExplanationScroll.css';
 
 export const Flows = () => {
   const [imagePreview, setImagePreview] = React.useState(false);
@@ -9,6 +10,26 @@ export const Flows = () => {
   const showImage = () => {
     setImagePreview(!imagePreview);
   }
+  const code = 
+`// Wrapping react App with <AuthProvider>
+<AuthProvider projectId=YOUR_PROJECT_ID>
+    <App />
+</AuthProvider>
+
+// Embedding Descope flow component
+<Descope
+    flowId="sign-up-or-in"
+    onSuccess={(e) => {
+        console.log("Logged in")
+        console.log("Username", e.detail.user.name)
+        console.log("Email", e.detail.user.email)
+    }}
+    onError={(e) => {
+        console.log("Error!", e)
+    }
+    theme="light"
+/>`;
+  
   return (
     <>
      <Modal isOpen={imagePreview} onClose={showImage} size="xl" isCentered>
@@ -55,7 +76,15 @@ export const Flows = () => {
         marginTop={{ sm: "0", md: "-42px" }}
         w={{ sm: "100%", md: "50%" }}
       >
-        <Image src={flow_image} className="img-flow" height={'100%'} cursor='pointer' onClick={showImage}/>
+        <pre style={{ margin: 0, overflow: 'auto' }}>
+          <code
+            className={`language-javascript`}
+            // style={{ "overflow-y": "scroll" }}
+            style={{ overflow: 'scroll' }}
+          >
+            {code}
+          </code>
+        </pre>
       </Box>
       <Box pt="20px">
         <a
