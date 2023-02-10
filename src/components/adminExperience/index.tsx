@@ -13,9 +13,7 @@ import {
   Text,
   useColorModeValue,
 } from "@chakra-ui/react";
-import { Flows } from "./Flows";
 import { Sdk } from "./Sdk";
-import { Api } from "./Api";
 
 export function AdminExperience() {
 
@@ -39,7 +37,7 @@ export function AdminExperience() {
               color="#FFFFFF"
               fontSize="18px"
             >
-              Interested to learn how we built this login experience?
+              Interested to learn how we built this "Step-Up" experience?
             </Box>
             <AccordionIcon color="#FFFFFF" />
           </AccordionButton>
@@ -51,9 +49,7 @@ export function AdminExperience() {
             pt={{ md: "18px", sm: "18px" }}
             color="#170A2C"
           >
-            This login experience was built using Descope Flows. You also have
-            several other ways of implementing login with Descope – choose
-            whichever one best fits your needs.
+            This "Step Up" experience was built using Descope Flows (similar to login page), and validated using the Descope backend SDKs. 
           </Text>
           <Tabs
             background="#111C44"
@@ -63,25 +59,13 @@ export function AdminExperience() {
           >
             <TabList borderBottom={"none"} color={"#ffffff"}>
               <Tab _focus={{ boxShadow: "none" }} fontWeight={"800"}>
-                Flows
-              </Tab>
-              <Tab _focus={{ boxShadow: "none" }} fontWeight={"800"}>
                 SDKs
-              </Tab>
-              <Tab _focus={{ boxShadow: "none" }} fontWeight={"800"}>
-                API
               </Tab>
             </TabList>
 
             <TabPanels color="#C6C6CB">
               <TabPanel>
-                <Flows />
-              </TabPanel>
-              <TabPanel>
                 <Sdk />
-              </TabPanel>
-              <TabPanel>
-                <Api />
               </TabPanel>
             </TabPanels>
           </Tabs>

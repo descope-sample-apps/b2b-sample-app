@@ -11,52 +11,35 @@ export const Sdk = () => {
   }, [])
 
   // The code snippet you want to highlight, as a string
-  const code = `// Import Descope SDK
-import descopeSdk from '@descope/web-js-sdk';
+  const code = 
+`import DescopeClient from "@descope/node-sdk";
 
-//Create SDK with project_id
-const sdk = descopeSdk({ projectId: <project_id> });
+// Acquiring the authorization header sent by the client
+const header = request.headers['authorization'];
+const session_token = header?.split(" ")[1] ?? "";
 
-// user object with user details from the form
-user = { "name": "Joe Person", "phone": "555-555-5555", "email": "email@company.com"};
+const descopeClient = DescopeClient({projectId: YOUR_PROJECT_ID});
 
-// identifier for the user to send the OTP to
-identifier = "email@company.com";
+const jwt = await descopeClient.validateSession(session_token);
 
-// Delivery Method
-delivery_method = "email";
-
-// Call the function for signing up user
-resp = await sdk.otp.signUpOrIn[delivery_method].(identifier, user);
+const stepUpCOnfirmed = (jwt.token.su === "yes")
+if (stepUpCOnfirmed) {
+  // step up confirmed
+} else {
+  // step up needed
+}
 `;
   return (
     <Flex direction={{ sm: "column", md: "row" }}>
       <Box w={{ sm: "100%", md: "50%" }} mr="9px">
         <Text paddingBottom="19px">
-          Descope SDKs allow you to easily integrate any passwordless
-          authentication method into your app.
+          Descope SDKs allow validate the provided session token, and extract any claims embedded on it. 
+          MFA and Step-Up are built-in claims that can be acquired as part of the validation process. 
         </Text>
         <Text paddingBottom="36px">
-          You can use Client SDKs to let Descope handle session management, or
-          Backend SDKs to directly connect your app server to our service.
+          Additional backend SDKs are available for other languages. 
         </Text>
         <Box display={{ sm: "none", md: "block" }}>
-          <a
-            href="https://docs.descope.com/build/guides/client_sdks/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <Button
-              color={"#FFFFFF"}
-              background={"#4318FF"}
-              borderRadius={"5px"}
-              w="47%"
-            _hover={{ color: "#4096ff", borderColor: "#4096ff" }}
-            >
-              Client SDKs
-            </Button>
-          </a>
-          &nbsp;&nbsp;
           <a
             href="https://docs.descope.com/build/guides/backend_sdks/"
             target="_blank"
@@ -66,7 +49,7 @@ resp = await sdk.otp.signUpOrIn[delivery_method].(identifier, user);
               color={"#FFFFFF"}
               background={"#4318FF"}
               borderRadius={"5px"}
-              w="47%"
+              w="99%"
             _hover={{ color: "#4096ff", borderColor: "#4096ff" }}
             >
               Backend SDKs
@@ -80,8 +63,7 @@ resp = await sdk.otp.signUpOrIn[delivery_method].(identifier, user);
         marginTop={{ sm: "0", md: "-42px" }}
         w={{ sm: "100%", md: "50%" }}
       >
-        {/* New code can be added here */}
-        {/* <pre style={{ margin: 0, overflow: 'auto' }}>
+        <pre style={{ margin: 0, overflow: 'auto' }}>
           <code
             className={`language-javascript`}
             // style={{ "overflow-y": "scroll" }}
@@ -89,7 +71,7 @@ resp = await sdk.otp.signUpOrIn[delivery_method].(identifier, user);
           >
             {code}
           </code>
-        </pre> */}
+        </pre>
       </Box>
       <Box pt="20px" display={{ sm: "block", md: "none" }}>
         <a
