@@ -219,7 +219,7 @@ export default async function handler(request, response) {
       ],
     };
 
-    const adminVerified = (out.token.verified === "yes")
+    const adminVerified = (out.token.su === true)
     
     if (roles.includes("Marketing")) {
       base_data.columns = base_data.columns.concat(base_data_marketing.columns);
