@@ -219,7 +219,7 @@ export default async function handler(request, response) {
       ],
     };
 
-    const adminVerified = (out.token.su === true)
+    const stepUpConfirmed = (jwt.token.su === "yes")
     
     if (roles.includes("Marketing")) {
       base_data.columns = base_data.columns.concat(base_data_marketing.columns);
@@ -233,7 +233,7 @@ export default async function handler(request, response) {
       base_data.complex = base_data.complex.concat(base_data_cs.complex);
       base_data.development = base_data.development.concat(base_data_cs.development);
     }
-    if (adminVerified) {
+    if (stepUpConfirmed) {
       base_data.columns = base_data.columns.concat(base_data_marketing.columns);
       base_data.check = base_data.check.concat(base_data_marketing.check);
       base_data.complex = base_data.complex.concat(base_data_marketing.complex);
