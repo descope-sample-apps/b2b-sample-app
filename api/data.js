@@ -23,9 +23,9 @@ export default async function handler(request, response) {
   let roles = [];
 
   try {
-    const out = await descopeClient.validateSession(session_token);
-    Object.keys(out.token.tenants || []).forEach((tenantId) => {
-      roles = roles.concat(out.token.tenants[tenantId].roles);
+    const jwt = await descopeClient.validateSession(session_token);
+    Object.keys(jwt.token.tenants || []).forEach((tenantId) => {
+      roles = roles.concat(jwt.token.tenants[tenantId].roles);
     });
 
     let base_data = { columns: [], check: [], complex: [], development: [] };
