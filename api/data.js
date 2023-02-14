@@ -252,7 +252,6 @@ export default async function handler(request, response) {
       cookies: request.cookies,
     });
   } catch (error) {
-    console.log(error);
     response.status(401).json({
       body: {},
       query: request.query,
