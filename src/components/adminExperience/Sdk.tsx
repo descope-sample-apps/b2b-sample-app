@@ -22,7 +22,7 @@ const descopeClient = DescopeClient({projectId: YOUR_PROJECT_ID});
 
 const jwt = await descopeClient.validateSession(session_token);
 
-const stepUpConfirmed = (jwt.token.su === "yes")
+const stepUpConfirmed = (jwt.token.su === true)
 if (stepUpCOnfirmed) {
   // step up confirmed
 } else {

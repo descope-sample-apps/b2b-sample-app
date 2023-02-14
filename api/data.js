@@ -5,7 +5,6 @@ dotenv.config();
 
 export default async function handler(request, response) {
   const projectId = request.headers['x-project-id'] || process.env.REACT_APP_DESCOPE_PROJECT_ID;
-  console.log(`Working with ProjectId: ${projectId}`)
   
   // when using cookies
   // const cookies = request.cookies;
@@ -219,7 +218,7 @@ export default async function handler(request, response) {
       ],
     };
 
-    const stepUpConfirmed = (jwt.token.su === "yes")
+    const stepUpConfirmed = (jwt.token.su === true)
     
     if (roles.includes("Marketing")) {
       base_data.columns = base_data.columns.concat(base_data_marketing.columns);
@@ -243,7 +242,7 @@ export default async function handler(request, response) {
       base_data.complex = base_data.complex.concat(base_data_cs.complex);
       base_data.development = base_data.development.concat(base_data_cs.development);
     }
-    if (roles.length===0 && !adminVerified) {
+    if (roles.length===0 && !stepUpConfirmed) {
       throw "401 Unauthorized User"
     }
 
