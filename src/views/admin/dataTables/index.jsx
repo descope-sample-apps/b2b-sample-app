@@ -8,7 +8,6 @@ import {
 	columnsDataColumns,
 	columnsDataComplex, columnsDataDevelopment
 } from "views/admin/dataTables/variables/columnsData";
-import { useHistory } from "react-router-dom";
 import { useState } from "react";
 import { AdminExperience } from "components/adminExperience/index";
 import { Descope } from "@descope/react-sdk";
@@ -23,7 +22,6 @@ export default function Settings() {
 		loaded: false,
 	});
 	const { colorMode } = useColorMode();
-	let history = useHistory();
 
 	const [authenticationFlow, setAuthenticationFlow] = useState(false);
 	const projectId = localStorage.getItem('projectId') || process.env.REACT_APP_DESCOPE_PROJECT_ID;
@@ -71,9 +69,6 @@ export default function Settings() {
 						flowId="step-up"
 						onSuccess={(e) => {
 							console.log('success => ', e)
-							history.push("/data-tables");
-							// return <Navigate to="/data-tables" replace={true} />
-
 						}}
 						onError={(e) => console.log("Error!")}
 						theme={ colorMode }

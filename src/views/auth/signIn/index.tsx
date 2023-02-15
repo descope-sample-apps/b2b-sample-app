@@ -44,15 +44,6 @@ export default function DescopeSignIn() {
             <Box
               me="auto"
               w={{ sm: "100%", md: "100%", lg: "80%", "2xl": "100%" }}
-              style={{ display: "flex", justifyContent: "center" }}
-            >
-              <Heading color={textColor} fontSize="36px" mb="10px">
-                Sign In
-              </Heading>
-            </Box>
-            <Box
-              me="auto"
-              w={{ sm: "100%", md: "100%", lg: "80%", "2xl": "100%" }}
               height="fit-content"
               display={"flex"}
               justifyContent={"center"}
