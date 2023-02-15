@@ -8,15 +8,16 @@ import { SidebarContext } from 'contexts/SidebarContext';
 import { useEffect, useState } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import routes from 'routes';
-import { useSession } from "@descope/react-sdk";
+import { useSession, useUser } from "@descope/react-sdk";
 import { useHistory } from "react-router-dom";
 
 // Custom Chakra theme
 export default function Dashboard(props: { [x: string]: any }) {
 	const { isAuthenticated , isSessionLoading} = useSession();
+	const { isUserLoading } = useUser();
 	let history = useHistory();
 	useEffect(() => {
-		console.log({isSessionLoading, isAuthenticated})
+		console.log({isSessionLoading, isAuthenticated, isUserLoading})
 		if (!isAuthenticated && !isSessionLoading) {
 			console.log("moving to /auth")
 			history.push("/auth");
