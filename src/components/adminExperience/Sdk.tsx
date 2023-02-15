@@ -33,8 +33,9 @@ if (stepUpCOnfirmed) {
     <Flex direction={{ sm: "column", md: "row" }}>
       <Box w={{ sm: "100%", md: "50%" }} mr="9px">
         <Text paddingBottom="19px">
-          Descope SDKs allow validate the provided session token, and extract any claims embedded on it. 
-          MFA and Step-Up are built-in claims that can be acquired as part of the validation process. 
+        Descope SDKs allow you to validate the provided session token and 
+        extract any claims embedded on it. MFA and Step-Up are built-in 
+        claims that can be acquired as part of the validation process.
         </Text>
         <Text paddingBottom="36px">
           Additional backend SDKs are available for other languages. 

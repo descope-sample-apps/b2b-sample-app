@@ -49,7 +49,9 @@ export function AdminExperience() {
             pt={{ md: "18px", sm: "18px" }}
             color="#170A2C"
           >
-            This "Step Up" experience was built using Descope Flows (similar to login page), and validated using the Descope backend SDKs. 
+            This “Step Up” experience was built using Descope Flows 
+            (the same Flow as the one used for the login page), 
+            and validated using the Descope Backend SDKs.
           </Text>
           <Tabs
             background="#111C44"

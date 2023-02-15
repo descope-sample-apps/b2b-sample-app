@@ -62,34 +62,37 @@ export default function WelcomeModal() {
               //   fontFamily={"Robot"}
               // pb={20}
             >
-              This is a sample B2B app built by Descope.
+              This is a sample B2B app built by Descope.<br/>
+              We hope this app can give you an idea of how Descope can help your B2B app <br/>with seamless and secure authentication.<br/><br/>
+
             </Text>
+            <Box
+              color={"#170A2C"}
+              fontWeight={500}
+              fontSize={22}
+              w={{ xl: "60%", sm: "100%", md: "86%" }}
+              marginLeft={{ xl: "14em", md: "55px" }}
+              paddingBottom={"45px"}
+            >
+              <Text pb="37px" me='auto' color={textColor}>
+              Here are some authentication flows you can explore:
+              </Text>
+              <UnorderedList marginLeft='2em'>
+              <ListItem color={textColor}>Try signing up</ListItem>
+              <ListItem color={textColor}>Try accessing the Admin Dashboard to experience a “Step Up” flow</ListItem>
+              </UnorderedList>
+            </Box>
             <Text
               textAlign={"center"}
               me='auto' color={textColor}
               // fontWeight={500}
-              fontSize={22}
+              fontSize={18}
               //   fontFamily={"Robot"}
               pb={43}
             >
-              Currently using Descope Flows from Project ID: {localStorage.getItem('projectId') ? localStorage.getItem('projectId') : 'Descope default project'}
+              <code>Currently using Descope Flows from Project ID: {localStorage.getItem('projectId') ? localStorage.getItem('projectId') : 'Descope default project'}</code>
             </Text>
-            <Box
-              color={"#170A2C"}
-              fontWeight={400}
-              fontSize={18}
-              w={{ xl: "48%", sm: "100%", md: "86%" }}
-              marginLeft={{ xl: "16em", md: "55px" }}
-              paddingBottom={"45px"}
-            >
-              <Text pb="37px" me='auto' color={textColor}>
-                Here are some ways you can explore the site and experience
-                seamless and secure authentication:
-              </Text>
-              <UnorderedList marginLeft='2em'>
-                <ListItem color={textColor}>Try signing up</ListItem>
-              </UnorderedList>
-            </Box>
+
           </ModalBody>
         </ModalContent>
       </Modal>
