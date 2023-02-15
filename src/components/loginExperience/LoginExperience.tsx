@@ -59,6 +59,10 @@ export function LoginExperience() {
             This login experience was built using Descope Flows. You also have
             several other ways of implementing login with Descope – choose
             whichever one best fits your needs.
+            <br/>
+            The Dolrr app is open source and available on GitHub 
+            here: <a target="_blank" href="https://github.com/descope/b2b-sample-app">https://github.com/descope/b2b-sample-app</a>
+
           </Text>
           <Tabs
             background="#111C44"

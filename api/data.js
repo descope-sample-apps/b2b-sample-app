@@ -5,7 +5,6 @@ dotenv.config();
 
 export default async function handler(request, response) {
   const projectId = request.headers['x-project-id'] || process.env.REACT_APP_DESCOPE_PROJECT_ID;
-  console.log(`Working with ProjectId: ${projectId}`)
   
   // when using cookies
   // const cookies = request.cookies;
@@ -23,9 +22,9 @@ export default async function handler(request, response) {
   let roles = [];
 
   try {
-    const out = await descopeClient.validateSession(session_token);
-    Object.keys(out.token.tenants || []).forEach((tenantId) => {
-      roles = roles.concat(out.token.tenants[tenantId].roles);
+    const jwt = await descopeClient.validateSession(session_token);
+    Object.keys(jwt.token.tenants || []).forEach((tenantId) => {
+      roles = roles.concat(jwt.token.tenants[tenantId].roles);
     });
 
     let base_data = { columns: [], check: [], complex: [], development: [] };
@@ -219,7 +218,7 @@ export default async function handler(request, response) {
       ],
     };
 
-    const adminVerified = (out.token.verified === "yes")
+    const stepUpConfirmed = (jwt.token.su === true)
     
     if (roles.includes("Marketing")) {
       base_data.columns = base_data.columns.concat(base_data_marketing.columns);
@@ -233,7 +232,7 @@ export default async function handler(request, response) {
       base_data.complex = base_data.complex.concat(base_data_cs.complex);
       base_data.development = base_data.development.concat(base_data_cs.development);
     }
-    if (adminVerified) {
+    if (stepUpConfirmed) {
       base_data.columns = base_data.columns.concat(base_data_marketing.columns);
       base_data.check = base_data.check.concat(base_data_marketing.check);
       base_data.complex = base_data.complex.concat(base_data_marketing.complex);
@@ -243,7 +242,7 @@ export default async function handler(request, response) {
       base_data.complex = base_data.complex.concat(base_data_cs.complex);
       base_data.development = base_data.development.concat(base_data_cs.development);
     }
-    if (roles.length===0 && !adminVerified) {
+    if (roles.length===0 && !stepUpConfirmed) {
       throw "401 Unauthorized User"
     }
 
@@ -253,7 +252,6 @@ export default async function handler(request, response) {
       cookies: request.cookies,
     });
   } catch (error) {
-    console.log(error);
     response.status(401).json({
       body: {},
       query: request.query,
