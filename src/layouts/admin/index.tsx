@@ -1,6 +1,5 @@
 // Chakra imports
 import { Portal, Box, useDisclosure } from '@chakra-ui/react';
-import Footer from 'components/footer/FooterAdmin';
 // Layout components
 import Navbar from 'components/navbar/NavbarAdmin';
 import Sidebar from 'components/sidebar/Sidebar';
@@ -22,7 +21,7 @@ export default function Dashboard(props: { [x: string]: any }) {
 			console.log("moving to /auth")
 			history.push("/auth");
 		 }
-	},[isAuthenticated , isSessionLoading]);
+	},[isAuthenticated , isSessionLoading, isUserLoading, history]);
 	const { ...rest } = props;
 	// states and functions
 	const [ fixed ] = useState(false);

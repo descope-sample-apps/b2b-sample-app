@@ -11,8 +11,7 @@ import {
   TabPanels,
   Tabs,
   Text,
-  useColorModeValue,
-} from "@chakra-ui/react";
+ } from "@chakra-ui/react";
 import { Sdk } from "./Sdk";
 
 export function AdminExperience() {
