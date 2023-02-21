@@ -12,7 +12,6 @@ import { useHistory } from "react-router-dom";
 import logo from "../../../assets/img/auth/dolrr_logo.svg";
 
 export default function DescopeSignIn() {
-  // const textColor = useColorModeValue("navy.700", "white");
   let history = useHistory();
   const { colorMode } = useColorMode();
   return (
