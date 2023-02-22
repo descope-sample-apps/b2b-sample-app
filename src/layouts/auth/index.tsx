@@ -22,7 +22,7 @@ export default function Auth() {
 		if (isAuthenticated) {
 			history.push("/admin");
 		 }
-	},[isAuthenticated]);
+	},[isAuthenticated,history]);
 	const getRoute = () => {
 		return window.location.pathname !== '/auth/full-screen-maps';
 	};

@@ -1,6 +1,6 @@
 import { ChakraProvider } from "@chakra-ui/react";
-import { AuthProvider, useSession, useUser } from "@descope/react-sdk";
-import React, { useEffect } from "react";
+import { AuthProvider } from "@descope/react-sdk";
+import React from "react";
 import ReactDOM from "react-dom";
 import { HashRouter, Redirect, Route, Switch } from "react-router-dom";
 import "./assets/css/App.css";

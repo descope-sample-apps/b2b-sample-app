@@ -1,7 +1,6 @@
 // Chakra imports
 import { Box, Flex } from "@chakra-ui/react";
 import PropTypes from "prop-types";
-import Footer from "components/footer/FooterAuth";
 import FixedPlugin from "components/fixedPlugin/FixedPlugin";
 
 function AuthIllustration(props: {
