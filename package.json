@@ -9,7 +9,7 @@
 		"@chakra-ui/system": "^1.12.1",
 		"@chakra-ui/theme-tools": "^1.3.6",
 		"@descope/node-sdk": "0.0.0-next-e0361769-20230612",
-		"@descope/react-sdk": "0.0.0-next-8917c58c-20230612",
+		"@descope/react-sdk": "0.0.0-next-4ee3f596-20230613",
 		"@emotion/cache": "^11.7.1",
 		"@emotion/react": "^11.4.1",
 		"@emotion/styled": "^11.3.0",
