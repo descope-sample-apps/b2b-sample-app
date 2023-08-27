@@ -59,7 +59,7 @@ export function LoginExperience() {
             whichever one best fits your needs.
             <br/>
             The Dolrr app is open source and available on GitHub 
-            here: <a href="https://github.com/descope/b2b-sample-app" target="_blank" rel=" noreferrer noopener">https://github.com/descope/b2b-sample-app</a>
+            here: <a href="https://github.com/descope-sample-apps/b2b-sample-app" target="_blank" rel=" noreferrer noopener">https://github.com/descope-sample-apps/b2b-sample-app</a>
 
           </Text>
           <Tabs
